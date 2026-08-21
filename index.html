@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ogundimbola Adesoji Raymond | Web Developer, AI Builder &amp; Founder</title>
+<meta name="description" content="Portfolio of Ogundimbola Adesoji Raymond, web developer, AI-assisted builder and Founder &amp; CEO of Taiky, building modern digital products.">
+<meta name="theme-color" content="#0A2540">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ogundimbola Adesoji Raymond | Web Developer, AI Builder & Founder">
+<meta property="og:description" content="I turn ideas into digital products. Web developer, AI-assisted builder and Founder & CEO of Taiky.">
+<meta property="og:url" content="https://raymond-ogundimbola.example.com/">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ogundimbola Adesoji Raymond | Web Developer, AI Builder & Founder">
+<meta name="twitter:description" content="I turn ideas into digital products. Web developer, AI-assisted builder and Founder & CEO of Taiky.">
+
+<link rel="canonical" href="https://raymond-ogundimbola.example.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230A2540'/%3E%3Ctext x='50' y='68' font-size='58' font-family='monospace' fill='%23F5F8FC' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy-deep:#061A2E;
+    --navy:#0A2540;
+    --white:#FFFFFF;
+    --bg-soft:#F5F8FC;
+    --muted:#64748B;
+    --accent:#2F6FED;
+    --accent-soft:#E7EFFE;
+    --line:rgba(10,37,64,0.12);
+    --line-strong:rgba(10,37,64,0.22);
+    --radius-s:6px;
+    --radius-m:10px;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+    --maxw:1180px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  body{
+    font-family:var(--font-body);
+    color:var(--navy);
+    background:var(--white);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit; cursor:pointer;}
+  input, textarea, select{font-family:inherit; font-size:1rem;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  .skip-link{
+    position:absolute; left:-999px; top:0; background:var(--navy); color:#fff; padding:10px 16px; z-index:1000;
+  }
+  .skip-link:focus{left:12px; top:12px;}
+
+  h1,h2,h3,h4{font-family:var(--font-display); font-weight:600; letter-spacing:-0.01em; color:var(--navy-deep);}
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px; background:var(--accent);
+  }
+
+  .section{padding:110px 0;}
+  @media (max-width:720px){ .section{padding:72px 0;} }
+
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(1.9rem, 3.2vw, 2.6rem); margin-bottom:14px;}
+  .section-head p{color:var(--muted); font-size:1.05rem;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-mono);
+    font-size:0.85rem;
+    padding:13px 22px;
+    border-radius:var(--radius-s);
+    border:1px solid transparent;
+    text-decoration:none;
+    transition:transform .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease), color .25s var(--ease);
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--navy-deep); color:#fff;}
+  .btn-primary:hover{background:var(--accent); transform:translateY(-2px);}
+  .btn-ghost{border-color:var(--line-strong); color:var(--navy);}
+  .btn-ghost:hover{border-color:var(--navy-deep); transform:translateY(-2px);}
+  .btn-arrow{transition:transform .25s var(--ease);}
+  .btn:hover .btn-arrow{transform:translateX(3px);}
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:500;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    height:74px;
+  }
+  .logo{
+    font-family:var(--font-mono); font-weight:600; font-size:1rem; color:var(--navy-deep);
+    text-decoration:none; letter-spacing:0.02em;
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo .dot{width:7px; height:7px; border-radius:50%; background:var(--accent);}
+  .nav-links{display:flex; align-items:center; gap:34px;}
+  .nav-links a{
+    font-size:0.92rem; text-decoration:none; color:var(--navy);
+    position:relative; padding:4px 0;
+  }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:-2px; width:0; height:1.5px; background:var(--accent);
+    transition:width .25s var(--ease);
+  }
+  .nav-links a:hover::after, .nav-links a.active::after{width:100%;}
+  .nav-cta{display:flex; align-items:center; gap:18px;}
+  .menu-toggle{
+    display:none; background:none; border:none; width:32px; height:22px; position:relative; z-index:600;
+  }
+  .menu-toggle span{
+    display:block; position:absolute; left:0; width:100%; height:2px; background:var(--navy-deep);
+    transition:transform .3s var(--ease), opacity .3s var(--ease);
+  }
+  .menu-toggle span:nth-child(1){top:0;}
+  .menu-toggle span:nth-child(2){top:10px;}
+  .menu-toggle span:nth-child(3){top:20px;}
+  .menu-toggle.open span:nth-child(1){transform:translateY(10px) rotate(45deg);}
+  .menu-toggle.open span:nth-child(2){opacity:0;}
+  .menu-toggle.open span:nth-child(3){transform:translateY(-10px) rotate(-45deg);}
+
+  @media (max-width:880px){
+    .nav-links{
+      position:fixed; inset:74px 0 0 0; background:var(--navy-deep);
+      flex-direction:column; justify-content:center; gap:30px;
+      transform:translateX(100%); transition:transform .4s var(--ease);
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-links a{color:#fff; font-size:1.3rem; font-family:var(--font-display);}
+    .nav-links a::after{background:var(--accent);}
+    .nav-cta .btn-ghost{display:none;}
+    .menu-toggle{display:block;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:96px 0 100px;
+    background:
+      radial-gradient(circle at 82% 18%, rgba(47,111,237,0.08), transparent 45%),
+      var(--bg-soft);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:64px; align-items:center;
+  }
+  @media (max-width:960px){ .hero-grid{grid-template-columns:1fr; gap:52px;} }
+
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    line-height:1.08;
+    margin-bottom:22px;
+  }
+  .hero-role{
+    font-family:var(--font-mono); font-size:0.95rem; color:var(--navy);
+    margin-bottom:22px; letter-spacing:0.01em;
+  }
+  .hero-role .sep{color:var(--accent); padding:0 8px;}
+  .hero p.lead{
+    color:var(--muted); font-size:1.08rem; max-width:520px; margin-bottom:34px;
+  }
+  .hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-bottom:40px;}
+  .hero-meta{display:flex; gap:28px; flex-wrap:wrap;}
+  .hero-meta a{
+    font-family:var(--font-mono); font-size:0.85rem; color:var(--navy);
+    text-decoration:none; border-bottom:1px solid var(--line-strong); padding-bottom:2px;
+    transition:border-color .2s var(--ease), color .2s var(--ease);
+  }
+  .hero-meta a:hover{color:var(--accent); border-color:var(--accent);}
+
+  /* Terminal signature element */
+  .terminal{
+    background:var(--navy-deep);
+    border-radius:var(--radius-m);
+    box-shadow:0 30px 60px -20px rgba(6,26,46,0.45);
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.06);
+  }
+  .terminal-bar{
+    display:flex; align-items:center; gap:8px;
+    padding:14px 16px;
+    background:rgba(255,255,255,0.03);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .terminal-bar span{width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.15);}
+  .terminal-bar .label{
+    margin-left:8px; font-family:var(--font-mono); font-size:0.75rem; color:rgba(255,255,255,0.4);
+  }
+  .terminal-body{
+    padding:26px 22px 30px;
+    font-family:var(--font-mono);
+    font-size:0.88rem;
+    color:#D9E4F5;
+    min-height:220px;
+  }
+  .terminal-body .line{margin-bottom:14px; opacity:0; transform:translateY(4px);}
+  .terminal-body .prompt{color:#5B8DEF;}
+  .terminal-body .comment{color:#6B85A8;}
+  .cursor{
+    display:inline-block; width:8px; height:16px; background:var(--accent); vertical-align:middle;
+    animation:blink 1s steps(1) infinite;
+  }
+  @keyframes blink{50%{opacity:0;}}
+
+  /* ---------- About ---------- */
+  .about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px;}
+  @media (max-width:880px){ .about-grid{grid-template-columns:1fr;} }
+  .about-copy p{margin-bottom:18px; color:var(--navy); font-size:1.03rem;}
+  .about-copy p.muted{color:var(--muted);}
+  .stat-card{
+    border:1px solid var(--line); border-radius:var(--radius-m); padding:22px;
+    background:var(--bg-soft);
+  }
+  .stat-list{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  @media (max-width:520px){ .stat-list{grid-template-columns:1fr;} }
+  .stat-card .num{font-family:var(--font-display); font-size:1.6rem; color:var(--navy-deep); font-weight:700;}
+  .stat-card .lbl{font-family:var(--font-mono); font-size:0.78rem; color:var(--muted); margin-top:4px;}
+
+  /* ---------- Philosophy ---------- */
+  .philosophy{
+    background:var(--navy-deep); color:#fff;
+  }
+  .philosophy .wrap{padding:100px 28px;}
+  .philosophy blockquote{
+    font-family:var(--font-display);
+    font-size:clamp(1.8rem, 4vw, 3.1rem);
+    line-height:1.18;
+    max-width:820px;
+    font-weight:600;
+  }
+  .philosophy blockquote span{color:var(--accent);}
+  .philosophy p{
+    margin-top:26px; color:rgba(255,255,255,0.62); max-width:560px; font-size:1.02rem;
+  }
+
+  /* ---------- Skills ---------- */
+  .skills-grid{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:22px;
+  }
+  @media (max-width:720px){ .skills-grid{grid-template-columns:1fr;} }
+  .skill-card{
+    border:1px solid var(--line); border-radius:var(--radius-m); padding:28px;
+    transition:border-color .25s var(--ease), transform .25s var(--ease);
+  }
+  .skill-card:hover{border-color:var(--line-strong); transform:translateY(-3px);}
+  .skill-card h3{font-size:1.08rem; margin-bottom:16px; display:flex; align-items:center; gap:10px;}
+  .skill-card h3 .idx{font-family:var(--font-mono); color:var(--accent); font-size:0.85rem;}
+  .tag-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-family:var(--font-mono); font-size:0.78rem; padding:7px 12px;
+    border:1px solid var(--line-strong); border-radius:100px; color:var(--navy);
+    background:var(--bg-soft);
+  }
+
+  /* ---------- Vibe coding ---------- */
+  .vibe{
+    background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .vibe-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
+  @media (max-width:880px){ .vibe-grid{grid-template-columns:1fr;} }
+  .vibe-list{margin-top:8px;}
+  .vibe-list li{
+    display:flex; gap:16px; padding:18px 0; border-top:1px solid var(--line);
+  }
+  .vibe-list li:last-child{border-bottom:1px solid var(--line);}
+  .vibe-list .n{font-family:var(--font-mono); color:var(--accent); font-size:0.85rem; padding-top:2px;}
+  .vibe-list strong{display:block; margin-bottom:4px; font-family:var(--font-display); font-weight:600;}
+  .vibe-list span.d{color:var(--muted); font-size:0.95rem;}
+  .vibe-note{
+    border-left:2px solid var(--accent); padding-left:18px; margin-top:26px; color:var(--muted); font-size:0.98rem;
+  }
+
+  /* ---------- Experience timeline ---------- */
+  .timeline{border-top:1px solid var(--line);}
+  .tl-item{
+    display:grid; grid-template-columns:140px 1fr; gap:40px;
+    padding:36px 0; border-bottom:1px solid var(--line);
+  }
+  @media (max-width:720px){ .tl-item{grid-template-columns:1fr; gap:8px;} }
+  .tl-period{font-family:var(--font-mono); font-size:0.85rem; color:var(--muted);}
+  .tl-role{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:10px;}
+  .tl-role h3{font-size:1.2rem;}
+  .tl-role .org{font-family:var(--font-mono); font-size:0.85rem; color:var(--accent);}
+  .tl-content p{color:var(--muted); margin-bottom:14px; max-width:640px;}
+  .tl-content .tag-row{margin-top:8px;}
+  .tl-link{
+    font-family:var(--font-mono); font-size:0.82rem; color:var(--navy);
+    text-decoration:none; border-bottom:1px solid var(--line-strong); padding-bottom:1px;
+  }
+  .tl-link:hover{color:var(--accent); border-color:var(--accent);}
+
+  /* ---------- Education ---------- */
+  .edu-card{
+    display:grid; grid-template-columns:auto 1fr; gap:28px; align-items:flex-start;
+    border:1px solid var(--line); border-radius:var(--radius-m); padding:30px;
+  }
+  @media (max-width:600px){ .edu-card{grid-template-columns:1fr;} }
+  .edu-mark{
+    font-family:var(--font-mono); font-size:0.8rem; color:var(--accent); border:1px solid var(--accent);
+    border-radius:100px; padding:6px 14px; white-space:nowrap; height:fit-content;
+  }
+  .edu-card h3{font-size:1.15rem; margin-bottom:6px;}
+  .edu-card .school{color:var(--muted); margin-bottom:14px; font-size:0.95rem;}
+  .edu-card p{color:var(--muted); font-size:0.98rem;}
+
+  /* ---------- Projects ---------- */
+  .project-list{display:flex; flex-direction:column;}
+  .project-card{
+    display:grid; grid-template-columns:80px 1fr 1fr; gap:30px;
+    padding:44px 0; border-top:1px solid var(--line);
+    transition:background .3s var(--ease);
+  }
+  .project-list .project-card:last-child{border-bottom:1px solid var(--line);}
+  @media (max-width:880px){
+    .project-card{grid-template-columns:1fr; gap:18px;}
+  }
+  .project-card:hover{background:var(--bg-soft);}
+  .p-index{
+    font-family:var(--font-mono); font-size:1.4rem; color:var(--line-strong);
+    transition:color .3s var(--ease);
+  }
+  .project-card:hover .p-index{color:var(--accent);}
+  .p-main h3{font-size:1.4rem; margin-bottom:8px;}
+  .p-tags{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px;}
+  .p-cat{
+    font-family:var(--font-mono); font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--muted); border:1px solid var(--line-strong); border-radius:100px; padding:4px 10px;
+  }
+  .p-main p{color:var(--muted); max-width:480px; margin-bottom:16px;}
+  .p-actions{display:flex; gap:12px; flex-wrap:wrap;}
+  .p-actions a{
+    font-family:var(--font-mono); font-size:0.8rem; text-decoration:none; color:var(--navy);
+    display:inline-flex; align-items:center; gap:6px;
+    border-bottom:1px solid var(--line-strong); padding-bottom:2px;
+    transition:color .2s var(--ease), border-color .2s var(--ease);
+  }
+  .p-actions a:hover{color:var(--accent); border-color:var(--accent);}
+  .p-visual{
+    justify-self:end; align-self:center; width:100%; max-width:280px;
+    border:1px solid var(--line); border-radius:var(--radius-m); padding:20px;
+    background:var(--white); font-family:var(--font-mono); font-size:0.78rem; color:var(--muted);
+    transition:transform .3s var(--ease), border-color .3s var(--ease);
+  }
+  .project-card:hover .p-visual{transform:translateY(-4px); border-color:var(--line-strong);}
+  @media (max-width:880px){ .p-visual{justify-self:start; max-width:100%;} }
+  .p-visual .url{color:var(--navy-deep); word-break:break-all; margin-bottom:8px;}
+  .p-visual .status{
+    display:inline-flex; align-items:center; gap:6px; font-size:0.72rem; color:var(--muted);
+  }
+  .p-visual .status .d{width:6px; height:6px; border-radius:50%; background:#22C55E;}
+
+  /* ---------- Taiky featured ---------- */
+  .taiky{
+    background:var(--navy);
+    color:#fff;
+    border-radius:var(--radius-m);
+    padding:64px;
+    position:relative;
+    overflow:hidden;
+  }
+  @media (max-width:720px){ .taiky{padding:40px 26px;} }
+  .taiky::before{
+    content:"";
+    position:absolute; top:-40%; right:-10%; width:520px; height:520px;
+    background:radial-gradient(circle, rgba(47,111,237,0.28), transparent 70%);
+    pointer-events:none;
+  }
+  .taiky-top{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap;
+    margin-bottom:36px; position:relative;
+  }
+  .taiky-top .eyebrow{color:#8FB4FF;}
+  .taiky-top .eyebrow::before{background:#8FB4FF;}
+  .taiky h2{color:#fff; font-size:clamp(1.9rem, 3.4vw, 2.7rem); max-width:600px;}
+  .taiky-lead{
+    font-family:var(--font-display); font-size:1.2rem; color:#C7D8F5; max-width:600px; margin-bottom:36px;
+    position:relative;
+  }
+  .taiky-cols{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:30px; position:relative;
+  }
+  @media (max-width:820px){ .taiky-cols{grid-template-columns:1fr;} }
+  .taiky-cols h4{
+    font-family:var(--font-mono); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em;
+    color:#8FB4FF; margin-bottom:12px;
+  }
+  .taiky-cols p{color:rgba(255,255,255,0.72); font-size:0.96rem;}
+  .taiky-loop{
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:40px; position:relative;
+  }
+  .loop-step{
+    font-family:var(--font-mono); font-size:0.76rem; color:#C7D8F5;
+    border:1px solid rgba(255,255,255,0.18); border-radius:100px; padding:8px 14px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .loop-step .lnum{color:#8FB4FF;}
+  .taiky-cta{margin-top:44px; position:relative;}
+
+  /* ---------- GitHub ---------- */
+  .gh-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px;}
+  @media (max-width:880px){ .gh-grid{grid-template-columns:1fr;} }
+  .gh-card{
+    border:1px solid var(--line); border-radius:var(--radius-m); padding:26px;
+    display:flex; flex-direction:column; height:100%;
+    transition:border-color .25s var(--ease), transform .25s var(--ease);
+  }
+  .gh-card:hover{border-color:var(--line-strong); transform:translateY(-3px);}
+  .gh-card .repo-name{font-family:var(--font-mono); font-weight:600; color:var(--navy-deep); margin-bottom:10px; font-size:0.98rem;}
+  .gh-card p{color:var(--muted); font-size:0.92rem; flex-grow:1; margin-bottom:16px;}
+  .gh-card .repo-meta{display:flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:0.76rem; color:var(--muted);}
+  .lang-dot{width:9px; height:9px; border-radius:50%; background:var(--accent);}
+  .gh-cta{
+    margin-top:44px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;
+    border-top:1px solid var(--line); padding-top:36px;
+  }
+  .gh-cta p{color:var(--muted); max-width:440px;}
+
+  /* ---------- Contact ---------- */
+  .contact{background:var(--bg-soft); border-top:1px solid var(--line);}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  @media (max-width:880px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact h2{font-size:clamp(2rem, 4vw, 2.8rem); margin-bottom:18px;}
+  .contact-copy p.lead{color:var(--muted); font-size:1.05rem; margin-bottom:30px; max-width:440px;}
+  .contact-links{display:flex; flex-direction:column; gap:14px;}
+  .contact-links a{
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--font-mono); font-size:0.9rem; text-decoration:none; color:var(--navy);
+    width:fit-content; border-bottom:1px solid transparent; transition:border-color .2s var(--ease), color .2s var(--ease);
+  }
+  .contact-links a:hover{color:var(--accent); border-color:var(--accent);}
+
+  .form-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius-m); padding:34px;
+  }
+  .field{margin-bottom:20px;}
+  .field label{
+    display:block; font-family:var(--font-mono); font-size:0.78rem; color:var(--navy); margin-bottom:8px;
+  }
+  .field input, .field select, .field textarea{
+    width:100%; padding:12px 14px; border:1px solid var(--line-strong); border-radius:var(--radius-s);
+    background:var(--bg-soft); color:var(--navy); transition:border-color .2s var(--ease), background .2s var(--ease);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    border-color:var(--accent); background:#fff; outline:none;
+  }
+  .field textarea{resize:vertical; min-height:110px;}
+  .field .err{
+    font-size:0.78rem; color:#D64545; margin-top:6px; display:none; font-family:var(--font-mono);
+  }
+  .field.invalid input, .field.invalid select, .field.invalid textarea{border-color:#D64545;}
+  .field.invalid .err{display:block;}
+  .form-note{font-size:0.82rem; color:var(--muted); margin-top:16px;}
+  .form-success{
+    display:none; border:1px solid var(--line-strong); border-radius:var(--radius-m); padding:22px;
+    background:var(--bg-soft);
+  }
+  .form-success.show{display:block;}
+  .form-success h4{margin-bottom:10px; font-size:1rem;}
+  .form-success p{color:var(--muted); font-size:0.92rem; margin-bottom:14px;}
+  .form-success textarea{
+    width:100%; min-height:100px; font-family:var(--font-mono); font-size:0.8rem;
+    border:1px solid var(--line-strong); border-radius:var(--radius-s); padding:12px; background:#fff; margin-bottom:12px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--navy-deep); color:rgba(255,255,255,0.7);}
+  .footer-top{
+    display:grid; grid-template-columns:1.3fr 1fr; gap:40px; padding:70px 0 46px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  @media (max-width:720px){ .footer-top{grid-template-columns:1fr;} }
+  .footer-top .logo{color:#fff;}
+  .footer-tag{font-family:var(--font-mono); font-size:0.85rem; margin-top:12px; color:rgba(255,255,255,0.5);}
+  .footer-links{display:flex; flex-wrap:wrap; gap:24px 34px; align-content:flex-start;}
+  .footer-links a{text-decoration:none; font-size:0.92rem; color:rgba(255,255,255,0.75);}
+  .footer-links a:hover{color:#fff;}
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center; padding:26px 0; flex-wrap:wrap; gap:12px;
+    font-family:var(--font-mono); font-size:0.78rem; color:rgba(255,255,255,0.4);
+  }
+
+  /* ---------- Portrait ---------- */
+  .about-grid{grid-template-columns:0.75fr 1.25fr;}
+  .portrait-col{position:sticky; top:100px; align-self:start;}
+  @media (max-width:880px){ .portrait-col{position:static;} }
+  .portrait-frame{
+    border-radius:var(--radius-m);
+    overflow:hidden;
+    border:1px solid var(--line);
+    background:var(--navy-deep);
+    box-shadow:0 24px 50px -24px rgba(6,26,46,0.4);
+  }
+  .portrait-frame img{
+    width:100%; display:block;
+    filter:grayscale(0.15) contrast(1.03);
+    transition:filter .4s var(--ease);
+  }
+  .portrait-frame:hover img{filter:grayscale(0); }
+  .portrait-caption{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 18px; border-top:1px solid rgba(255,255,255,0.08);
+    font-family:var(--font-mono); font-size:0.76rem; color:rgba(255,255,255,0.55);
+  }
+  .portrait-caption strong{color:#fff; font-family:var(--font-mono); font-weight:500;}
+
+  /* ---------- Updates ---------- */
+  .updates{border-top:1px solid var(--line);}
+  .update-list{display:flex; flex-direction:column; gap:0;}
+  .update-item{
+    display:grid; grid-template-columns:150px 1fr; gap:30px;
+    padding:30px 0; border-bottom:1px solid var(--line);
+  }
+  @media (max-width:660px){ .update-item{grid-template-columns:1fr; gap:8px;} }
+  .update-date{font-family:var(--font-mono); font-size:0.82rem; color:var(--muted);}
+  .update-body h3{font-size:1.05rem; margin-bottom:8px;}
+  .update-body p{color:var(--muted); font-size:0.96rem;}
+  .update-empty{
+    padding:40px 0; color:var(--muted); font-family:var(--font-mono); font-size:0.9rem;
+    border-bottom:1px solid var(--line); display:none;
+  }
+  .update-del{
+    display:none; margin-top:10px; font-family:var(--font-mono); font-size:0.75rem;
+    color:#D64545; background:none; border:1px solid #D64545; border-radius:100px; padding:4px 10px;
+  }
+
+  /* ---------- CMS / Edit mode ---------- */
+  [data-ck]{transition:outline .15s ease, background .15s ease;}
+  body.edit-mode [data-ck]{
+    outline:1.5px dashed rgba(47,111,237,0.5);
+    outline-offset:4px;
+    border-radius:3px;
+    cursor:text;
+  }
+  body.edit-mode [data-ck]:hover{background:rgba(47,111,237,0.06);}
+  body.edit-mode [data-ck]:focus{outline:1.5px solid var(--accent); background:rgba(47,111,237,0.08);}
+  body.edit-mode .update-del{display:inline-block;}
+  body.edit-mode .update-empty.show-in-edit{display:block;}
+
+  .cms-toggle{
+    position:fixed; right:20px; bottom:20px; z-index:900;
+    width:46px; height:46px; border-radius:50%;
+    background:var(--navy-deep); color:#fff; border:1px solid rgba(255,255,255,0.15);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-mono); font-size:1rem;
+    box-shadow:0 12px 24px -8px rgba(6,26,46,0.5);
+    transition:transform .2s var(--ease), background .2s var(--ease);
+  }
+  .cms-toggle:hover{transform:scale(1.06); background:var(--accent);}
+
+  .cms-panel{
+    position:fixed; right:20px; bottom:78px; z-index:900;
+    width:320px; max-width:calc(100vw - 40px);
+    background:#fff; border:1px solid var(--line-strong); border-radius:var(--radius-m);
+    box-shadow:0 30px 60px -20px rgba(6,26,46,0.35);
+    padding:20px; display:none;
+    font-family:var(--font-body);
+  }
+  .cms-panel.open{display:block;}
+  .cms-panel h4{font-size:0.95rem; margin-bottom:4px;}
+  .cms-panel .cms-sub{font-size:0.78rem; color:var(--muted); margin-bottom:14px; line-height:1.5;}
+  .cms-row{display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;}
+  .cms-row span{font-family:var(--font-mono); font-size:0.82rem;}
+  .cms-switch{
+    width:38px; height:22px; border-radius:100px; background:var(--line-strong);
+    position:relative; border:none; padding:0;
+  }
+  .cms-switch::after{
+    content:""; position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:50%;
+    background:#fff; transition:transform .2s var(--ease);
+  }
+  .cms-switch.on{background:var(--accent);}
+  .cms-switch.on::after{transform:translateX(16px);}
+  .cms-actions{display:flex; flex-direction:column; gap:8px; margin-top:6px;}
+  .cms-btn{
+    font-family:var(--font-mono); font-size:0.78rem; padding:9px 12px; border-radius:var(--radius-s);
+    border:1px solid var(--line-strong); background:var(--bg-soft); color:var(--navy); text-align:left;
+  }
+  .cms-btn:hover{border-color:var(--navy-deep);}
+  .cms-file{display:none;}
+  .cms-status{
+    font-family:var(--font-mono); font-size:0.72rem; color:var(--accent); margin-top:10px; min-height:14px;
+  }
+  .cms-new-update{
+    margin-top:16px; padding-top:16px; border-top:1px solid var(--line); display:none;
+  }
+  body.edit-mode .cms-new-update{display:block;}
+  .cms-new-update input, .cms-new-update textarea{
+    width:100%; margin-bottom:8px; padding:8px 10px; border:1px solid var(--line-strong);
+    border-radius:var(--radius-s); font-size:0.85rem; background:var(--bg-soft);
+  }
+  .cms-new-update textarea{min-height:60px; resize:vertical;}
+
+  /* ---------- CMS lock ---------- */
+  .cms-lock-dot{
+    position:fixed; right:24px; bottom:24px; z-index:900;
+    width:10px; height:10px; border-radius:50%;
+    background:var(--navy-deep); opacity:0.14; border:none; padding:0;
+    transition:opacity .2s var(--ease), transform .2s var(--ease);
+  }
+  .cms-lock-dot:hover{opacity:0.5; transform:scale(1.3);}
+  .cms-lock-dot.hidden{display:none;}
+
+  .cms-lock-overlay{
+    position:fixed; inset:0; z-index:950; background:rgba(6,26,46,0.55);
+    display:none; align-items:center; justify-content:center; padding:20px;
+  }
+  .cms-lock-overlay.open{display:flex;}
+  .cms-lock-box{
+    background:#fff; border-radius:var(--radius-m); padding:30px; max-width:340px; width:100%;
+    box-shadow:0 30px 60px -20px rgba(6,26,46,0.4); font-family:var(--font-body);
+  }
+  .cms-lock-box h4{font-size:1rem; margin-bottom:6px;}
+  .cms-lock-box p.sub{font-size:0.8rem; color:var(--muted); margin-bottom:18px; line-height:1.5;}
+  .cms-lock-box input{
+    width:100%; padding:10px 12px; border:1px solid var(--line-strong); border-radius:var(--radius-s);
+    margin-bottom:10px; font-size:0.9rem;
+  }
+  .cms-lock-actions{display:flex; flex-direction:column; gap:8px; margin-top:4px;}
+  .cms-lock-btn{
+    font-family:var(--font-mono); font-size:0.82rem; padding:10px 12px; border-radius:var(--radius-s);
+    border:1px solid var(--line-strong); background:var(--bg-soft); color:var(--navy); text-align:center;
+  }
+  .cms-lock-btn.primary{background:var(--navy-deep); color:#fff; border-color:var(--navy-deep);}
+  .cms-lock-btn:hover{border-color:var(--navy-deep);}
+  .cms-lock-msg{font-family:var(--font-mono); font-size:0.75rem; color:#D64545; min-height:16px; margin-top:6px;}
+  .cms-lock-divider{
+    display:flex; align-items:center; gap:10px; margin:14px 0;
+    font-family:var(--font-mono); font-size:0.7rem; color:var(--muted); text-transform:uppercase;
+  }
+  .cms-lock-divider::before, .cms-lock-divider::after{content:""; flex:1; height:1px; background:var(--line);}
+
+  /* ---------- Reveal ---------- */
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s var(--ease), transform .7s var(--ease);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header>
+  <nav class="wrap nav" aria-label="Primary">
+    <a href="#home" class="logo"><span class="dot"></span>Raymond</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" data-nav>Home</a></li>
+      <li><a href="#about" data-nav>About</a></li>
+      <li><a href="#skills" data-nav>Skills</a></li>
+      <li><a href="#experience" data-nav>Experience</a></li>
+      <li><a href="#projects" data-nav>Projects</a></li>
+      <li><a href="#taiky" data-nav>Taiky</a></li>
+      <li><a href="#updates" data-nav>Updates</a></li>
+      <li><a href="#contact" data-nav>Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-ghost">Let's Talk</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Web Developer &middot; AI Builder &middot; Founder</p>
+        <h1 data-ck="hero-h1">I turn ideas into<br>digital products.</h1>
+        <p class="hero-role" data-ck="hero-role">Web Developer <span class="sep">&middot;</span> AI / Vibe Coder <span class="sep">&middot;</span> Founder <span class="sep">&middot;</span> Problem Solver</p>
+        <p class="lead" data-ck="hero-lead">I build modern websites and digital experiences, combining hands-on web development with AI-assisted workflows and product thinking. I find a problem, shape an idea around it, design the solution, build it, and ship it.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View My Work <span class="btn-arrow">&rarr;</span></a>
+          <a href="#contact" class="btn btn-ghost">Let's Build Something</a>
+        </div>
+        <div class="hero-meta">
+          <a href="https://github.com/olobaray20" target="_blank" rel="noopener">GitHub &#8599;</a>
+          <a href="#" id="linkedinLink">LinkedIn &#8599;</a>
+        </div>
+      </div>
+
+      <div class="terminal reveal" aria-hidden="false">
+        <div class="terminal-bar">
+          <span></span><span></span><span></span>
+          <span class="label">raymond@build &mdash; process</span>
+        </div>
+        <div class="terminal-body" id="terminalBody">
+          <!-- lines injected by JS for typewriter effect -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="wrap about-grid">
+      <div class="reveal portrait-col">
+        <p class="eyebrow">About</p>
+        <h2 data-ck="about-heading">Building things, quickly and on purpose.</h2>
+        <div class="portrait-frame" style="margin-top:28px;">
+          <img src="raymond.jpg" alt="Portrait of Ogundimbola Adesoji Raymond" width="900" height="1200" loading="lazy">
+          <div class="portrait-caption">
+            <strong>Raymond Ogundimbola</strong>
+            <span>Founder, Taiky</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-copy reveal">
+        <p data-ck="about-p1">I'm Ogundimbola Adesoji Raymond, a web developer, AI-assisted builder and entrepreneur. My work is about turning ideas into digital products people can actually use, not just writing code for its own sake.</p>
+        <p data-ck="about-p2">Over the past year I've built my web development skills alongside modern AI-assisted, "vibe coding" workflows, using them to move from concept to working product faster than a traditional build cycle usually allows. I use that combination to turn ideas, concepts and business requirements into responsive, user-focused digital experiences.</p>
+        <p data-ck="about-p3">I'm also the Founder &amp; CEO of Taiky, a commerce platform I'm building to bring verified vendors, escrow-protected payments and live delivery tracking into one trusted ecosystem, launching first in Lagos.</p>
+        <p class="muted" data-ck="about-p4">Before development, I spent two years as a Front Desk Administrator, where I built communication, organisation and problem-solving skills through direct customer contact. I also spent a year in radio engineering at People's 93.1 FM in Yenagoa, Bayelsa State, working in a technical broadcast environment. I hold a B.Sc. in Physics with Electronics from Adekunle Ajasin University, Akungba-Akoko, Ondo State, which is where my analytical, systems-first approach to problem solving comes from.</p>
+
+        <div class="stat-card" style="margin-top:28px;">
+          <div class="stat-list">
+            <div>
+              <div class="num">1 yr</div>
+              <div class="lbl">Web development</div>
+            </div>
+            <div>
+              <div class="num">1 yr</div>
+              <div class="lbl">AI-assisted / vibe coding</div>
+            </div>
+            <div>
+              <div class="num">2 yrs</div>
+              <div class="lbl">Front desk administration</div>
+            </div>
+            <div>
+              <div class="num">1 yr</div>
+              <div class="lbl">Radio engineering</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy">
+    <div class="wrap reveal">
+      <p class="eyebrow" style="color:#8FB4FF;">Philosophy</p>
+      <blockquote data-ck="philosophy-quote">&ldquo;Technology should solve <span>something.</span>&rdquo;</blockquote>
+      <p data-ck="philosophy-body">I don't start with the code. I start with a real problem, something that's slow, unclear or broken for someone. Code is the tool I use to fix it, not the point of the exercise. If a product doesn't make something easier, faster or more trustworthy for the person using it, it hasn't done its job yet, however well it's built.</p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Skills</p>
+        <h2>What I actually work with.</h2>
+        <p>No inflated percentages, just the tools, languages and disciplines I use in real projects.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <h3><span class="idx">01</span>Web Development</h3>
+          <div class="tag-row">
+            <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">TypeScript</span>
+            <span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Tailwind CSS</span>
+            <span class="tag">Responsive Design</span><span class="tag">API Integration</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <h3><span class="idx">02</span>AI-Assisted Development</h3>
+          <div class="tag-row">
+            <span class="tag">AI-assisted coding</span><span class="tag">Vibe coding</span>
+            <span class="tag">Rapid prototyping</span><span class="tag">Debugging</span>
+            <span class="tag">Iteration</span><span class="tag">Google Gemini API</span><span class="tag">ElevenLabs API</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <h3><span class="idx">03</span>Product &amp; Design</h3>
+          <div class="tag-row">
+            <span class="tag">Product thinking</span><span class="tag">UX</span><span class="tag">UI</span>
+            <span class="tag">Digital product development</span><span class="tag">Prototyping</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <h3><span class="idx">04</span>Professional</h3>
+          <div class="tag-row">
+            <span class="tag">Communication</span><span class="tag">Administration</span>
+            <span class="tag">Customer service</span><span class="tag">Problem solving</span><span class="tag">Organisation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIBE CODING -->
+  <section class="section vibe">
+    <div class="wrap vibe-grid">
+      <div class="reveal">
+        <p class="eyebrow">How I Work</p>
+        <h2>Building at the speed of ideas.</h2>
+        <p style="color:var(--muted); font-size:1.03rem; margin-top:14px;">AI accelerates development. It doesn't replace judgement. I still decide what to build, why it matters and whether it's actually solving the problem, AI just closes the gap between having the idea and having something working.</p>
+        <p class="vibe-note">This is what let me go from limited formal development experience to shipping real, working products in about a year.</p>
+      </div>
+      <div class="reveal">
+        <ul class="vibe-list">
+          <li>
+            <span class="n">01</span>
+            <div>
+              <strong>Prototype fast</strong>
+              <span class="d">Turn a rough idea into a working interface in hours, not weeks.</span>
+            </div>
+          </li>
+          <li>
+            <span class="n">02</span>
+            <div>
+              <strong>Explore solutions</strong>
+              <span class="d">Try more than one approach before committing to a direction.</span>
+            </div>
+          </li>
+          <li>
+            <span class="n">03</span>
+            <div>
+              <strong>Build real interfaces</strong>
+              <span class="d">Move from prototype to something people can actually use.</span>
+            </div>
+          </li>
+          <li>
+            <span class="n">04</span>
+            <div>
+              <strong>Debug and iterate</strong>
+              <span class="d">Use AI to move through problems quickly, then verify the fix myself.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Experience</p>
+        <h2>Where the work has actually happened.</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-period">Ongoing</div>
+          <div class="tl-content">
+            <div class="tl-role">
+              <h3>Founder &amp; CEO</h3>
+              <span class="org">Taiky</span>
+            </div>
+            <p>Building Taiky, a commerce platform bringing verified vendors, escrow-protected payments and live delivery tracking into one trusted ecosystem, launching first in Lagos. Running this end to end has meant handling product decisions, user experience, and the practical realities of building a digital platform from an idea.</p>
+            <a href="https://taiky.netlify.app/" target="_blank" rel="noopener" class="tl-link">Visit Taiky &#8599;</a>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-period">2 years</div>
+          <div class="tl-content">
+            <div class="tl-role">
+              <h3>Front Desk Administrator</h3>
+            </div>
+            <p>Managed enquiries and day-to-day coordination in a customer-facing role, building strong communication, organisation and problem-solving skills along the way.</p>
+            <div class="tag-row">
+              <span class="tag">Communication</span><span class="tag">Customer service</span>
+              <span class="tag">Coordination</span><span class="tag">Attention to detail</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-period">1 year</div>
+          <div class="tl-content">
+            <div class="tl-role">
+              <h3>Radio Engineering</h3>
+              <span class="org">People's 93.1 FM, Yenagoa</span>
+            </div>
+            <p>Worked within a technical broadcast environment at People's 93.1 FM in Yenagoa, Bayelsa State, an early exposure to structured, technical, and time-sensitive systems that later shaped how I approach engineering problems.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="edu-card reveal">
+        <span class="edu-mark">Education</span>
+        <div>
+          <h3>B.Sc. Physics with Electronics</h3>
+          <p class="school">Adekunle Ajasin University, Akungba-Akoko, Ondo State</p>
+          <p>My academic background in physics and electronics gave me a foundation in analytical thinking, logical reasoning and understanding how systems actually behave, the same mindset I bring to building and debugging digital products today.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Selected Work</p>
+        <h2>Digital products, websites and experiments I've built.</h2>
+      </div>
+
+      <div class="project-list">
+
+        <article class="project-card reveal">
+          <div class="p-index">01</div>
+          <div class="p-main">
+            <h3>Taiky</h3>
+            <div class="p-tags"><span class="p-cat">Commerce Platform</span><span class="p-cat">Founder Project</span></div>
+            <p>A commerce ecosystem for Lagos, combining verified vendors, escrow-protected payments and live delivery tracking into a single trusted flow: vendor verified, order placed, funds held in escrow, delivery tracked, receipt confirmed, funds released. Currently in early access.</p>
+            <div class="p-actions">
+              <a href="https://taiky.netlify.app/" target="_blank" rel="noopener">Visit Live Site &#8599;</a>
+            </div>
+          </div>
+          <div class="p-visual">
+            <div class="url">taiky.netlify.app</div>
+            <p style="margin-bottom:10px;">Marketplace &middot; escrow &middot; live tracking</p>
+            <span class="status"><span class="d"></span>Live, Phase 0</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="p-index">02</div>
+          <div class="p-main">
+            <h3>MarketFlow</h3>
+            <div class="p-tags"><span class="p-cat">Web App</span></div>
+            <p>A live web build, deployed and interactive. It's best explored directly rather than described secondhand, so take a look at the live site.</p>
+            <div class="p-actions">
+              <a href="https://market-flow-psi.vercel.app/" target="_blank" rel="noopener">Visit Live Site &#8599;</a>
+            </div>
+          </div>
+          <div class="p-visual">
+            <div class="url">market-flow-psi.vercel.app</div>
+            <p style="margin-bottom:10px;">Deployed on Vercel</p>
+            <span class="status"><span class="d"></span>Live</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="p-index">03</div>
+          <div class="p-main">
+            <h3>USA Logistic Transport</h3>
+            <div class="p-tags"><span class="p-cat">Business Website Concept</span></div>
+            <p>A front-end concept build for an auto transport and logistics business, exploring how a fleet-driven service company can present itself online.</p>
+            <div class="p-actions">
+              <a href="https://usa-logistic-transport.vercel.app/" target="_blank" rel="noopener">Visit Live Site &#8599;</a>
+            </div>
+          </div>
+          <div class="p-visual">
+            <div class="url">usa-logistic-transport.vercel.app</div>
+            <p style="margin-bottom:10px;">Auto transport &amp; logistics site</p>
+            <span class="status"><span class="d"></span>Live</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="p-index">04</div>
+          <div class="p-main">
+            <h3>PawTalk</h3>
+            <div class="p-tags"><span class="p-cat">AI-Assisted Build</span><span class="p-cat">Hackathon</span></div>
+            <p>Built for DEV Community's "Dog Days" Weekend Challenge. Upload a photo of your dog, get an AI-generated personality, ask them a question, and hear them answer back in a generated voice. Uses Google Gemini for the personality and conversation, and ElevenLabs for voice.</p>
+            <div class="p-actions">
+              <a href="https://pawtalk-murex.vercel.app/" target="_blank" rel="noopener">Visit Live Site &#8599;</a>
+              <a href="https://github.com/olobaray20/PAWTALK" target="_blank" rel="noopener">View GitHub &#8599;</a>
+            </div>
+          </div>
+          <div class="p-visual">
+            <div class="url">pawtalk-murex.vercel.app</div>
+            <p style="margin-bottom:10px;">Google Gemini &middot; ElevenLabs</p>
+            <span class="status"><span class="d"></span>Live</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TAIKY FEATURED -->
+  <section class="section" id="taiky">
+    <div class="wrap">
+      <div class="taiky reveal">
+        <div class="taiky-top">
+          <div>
+            <p class="eyebrow">Featured Project</p>
+            <h2>Building Taiky.</h2>
+          </div>
+          <a href="https://taiky.netlify.app/" target="_blank" rel="noopener" class="btn btn-ghost" style="border-color:rgba(255,255,255,0.3); color:#fff;">Explore Taiky <span class="btn-arrow">&rarr;</span></a>
+        </div>
+
+        <p class="taiky-lead" data-ck="taiky-lead">I didn't just want to build websites for other people. I wanted to build a product of my own, so I started Taiky.</p>
+
+        <div class="taiky-cols">
+          <div>
+            <h4>The Problem</h4>
+            <p>Commerce in Lagos is fragmented across separate apps and word-of-mouth trust. Buyers pay first and hope the seller is real, delivery day means guessing where an order is, and there's no single platform tying vendors, payments and delivery together with real protection.</p>
+          </div>
+          <div>
+            <h4>The Vision</h4>
+            <p>Taiky unifies verified vendors, escrow-protected payments and live-tracked delivery into one platform, so trust isn't something a buyer has to assume, it's built into every order.</p>
+          </div>
+          <div>
+            <h4>My Role</h4>
+            <p>As Founder &amp; CEO, I own the product decisions, the user experience and the day-to-day work of turning the idea into something real, the same problem-first, build-it-yourself approach behind everything else in this portfolio.</p>
+          </div>
+        </div>
+
+        <div class="taiky-loop">
+          <span class="loop-step"><span class="lnum">01</span>Vendor verified</span>
+          <span class="loop-step"><span class="lnum">02</span>Customer orders</span>
+          <span class="loop-step"><span class="lnum">03</span>Escrow holds funds</span>
+          <span class="loop-step"><span class="lnum">04</span>Delivery tracked live</span>
+          <span class="loop-step"><span class="lnum">05</span>Receipt confirmed</span>
+          <span class="loop-step"><span class="lnum">06</span>Funds released</span>
+        </div>
+
+        <div class="taiky-cta">
+          <a href="https://taiky.netlify.app/" target="_blank" rel="noopener" class="btn btn-primary" style="background:var(--accent);">See What I Built <span class="btn-arrow">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GITHUB -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Open Source &amp; Experiments</p>
+        <h2>What's on GitHub.</h2>
+        <p>A few of the things I've built and shipped in public.</p>
+      </div>
+
+      <div class="gh-grid">
+        <div class="gh-card reveal">
+          <div class="repo-name">chainguard-ai</div>
+          <p>AI-powered on-chain intelligence miner for wallet risk analysis, built for the Telegraph Hackathon.</p>
+          <div class="repo-meta"><span class="lang-dot"></span>TypeScript</div>
+        </div>
+        <div class="gh-card reveal">
+          <div class="repo-name">market-intelligence-miner</div>
+          <p>Market intelligence miner, built for Telegraph proto season 1.</p>
+          <div class="repo-meta"><span class="lang-dot"></span>TypeScript</div>
+        </div>
+        <div class="gh-card reveal">
+          <div class="repo-name">PAWTALK</div>
+          <p>An AI-powered dog personality experience where your dog gets a unique personality, answers questions, and speaks with an AI-generated voice.</p>
+          <div class="repo-meta"><span class="lang-dot"></span>TypeScript</div>
+        </div>
+      </div>
+
+      <div class="gh-cta reveal">
+        <p>These are public builds, some polished, some experimental. GitHub is the most honest record of what I've actually shipped.</p>
+        <a href="https://github.com/olobaray20" target="_blank" rel="noopener" class="btn btn-primary">View GitHub Profile <span class="btn-arrow">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPDATES -->
+  <section class="section updates" id="updates">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Updates</p>
+        <h2>What I'm building right now.</h2>
+        <p>Short, dated notes on progress, launches and things I've shipped.</p>
+      </div>
+
+      <div class="update-list" id="updateList">
+        <!-- rendered by JS from updatesData -->
+      </div>
+      <p class="update-empty" id="updateEmpty">No updates yet. Turn on edit mode to add the first one.</p>
+
+      <div class="cms-new-update" id="newUpdateForm">
+        <input type="text" id="nuTitle" placeholder="Update title">
+        <input type="text" id="nuDate" placeholder="Date, e.g. Aug 2026">
+        <textarea id="nuBody" placeholder="What happened?"></textarea>
+        <button type="button" class="cms-btn" id="nuAdd">Add update</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="wrap contact-grid">
+      <div class="reveal">
+        <p class="eyebrow">Contact</p>
+        <h2>Have an idea worth building?</h2>
+        <p class="lead">Whether you need a website, a digital product, or just want to think through an idea out loud, let's talk.</p>
+        <div class="contact-links">
+          <a href="mailto:Ogundimbolaray269@gmail.com">Ogundimbolaray269@gmail.com &#8599;</a>
+          <a href="tel:+2349138424496">+234 913 842 4496 &#8599;</a>
+          <a href="https://wa.me/2349138424496" target="_blank" rel="noopener">WhatsApp &#8599;</a>
+          <a href="https://github.com/olobaray20" target="_blank" rel="noopener">GitHub &#8599;</a>
+          <a href="#" id="linkedinLink2">LinkedIn &#8599;</a>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <form class="form-card" id="contactForm" novalidate>
+          <div class="field" id="f-name">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" autocomplete="name">
+            <span class="err">Please enter your name.</span>
+          </div>
+          <div class="field" id="f-email">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email">
+            <span class="err">Please enter a valid email address.</span>
+          </div>
+          <div class="field" id="f-type">
+            <label for="type">Project type</label>
+            <select id="type" name="type">
+              <option value="">Select one</option>
+              <option value="Website">Website</option>
+              <option value="Web App / Product">Web App / Product</option>
+              <option value="AI-assisted build">AI-assisted build</option>
+              <option value="Something else">Something else</option>
+            </select>
+            <span class="err">Please choose a project type.</span>
+          </div>
+          <div class="field" id="f-message">
+            <label for="message">Message</label>
+            <textarea id="message" name="message"></textarea>
+            <span class="err">Please add a short message.</span>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Start a Conversation</button>
+          <p class="form-note">This form checks your details but isn't connected to an email service yet, so nothing sends automatically. Submitting prepares your message below to copy and send directly.</p>
+
+          <div class="form-success" id="formSuccess">
+            <h4>Your message is ready</h4>
+            <p>Copy this and send it over on GitHub, or paste it into your own email once a direct address is added here.</p>
+            <textarea id="successText" readonly></textarea>
+            <button type="button" class="btn btn-ghost" id="copyBtn">Copy Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-top">
+    <div>
+      <a href="#home" class="logo"><span class="dot"></span>Raymond Ogundimbola</a>
+      <p class="footer-tag">Web Developer &middot; AI/Vibe Coder &middot; Founder</p>
+      <p class="footer-tag" style="margin-top:8px;">
+        <a href="mailto:Ogundimbolaray269@gmail.com" style="color:rgba(255,255,255,0.55);">Ogundimbolaray269@gmail.com</a>
+        &middot;
+        <a href="https://wa.me/2349138424496" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.55);">+234 913 842 4496</a>
+      </p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="https://github.com/olobaray20" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="#updates">Updates</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>&copy; 2026 Raymond Ogundimbola. All rights reserved.</span>
+    <span>Built by hand, sped up with AI.</span>
+  </div>
+</footer>
+
+<!-- CMS ADMIN -->
+<button class="cms-lock-dot" id="cmsLockDot" aria-label="Site owner sign in" title=""></button>
+
+<div class="cms-lock-overlay" id="cmsLockOverlay">
+  <div class="cms-lock-box" id="cmsLockBox">
+    <!-- filled by JS: setup view or unlock view -->
+  </div>
+</div>
+
+<button class="cms-toggle" id="cmsToggle" aria-label="Open site editor" title="Edit this site" style="display:none;">&#9998;</button>
+<div class="cms-panel" id="cmsPanel">
+  <h4>Site editor</h4>
+  <p class="cms-sub">Turn on edit mode, then click any outlined text to change it, or add an update below. Edits save to this browser automatically. Use export to keep a permanent copy or move edits to the live site.</p>
+  <div class="cms-row">
+    <span>Edit mode</span>
+    <button class="cms-switch" id="cmsSwitch" type="button" aria-pressed="false"></button>
+  </div>
+  <div class="cms-actions">
+    <button class="cms-btn" id="cmsSave">Save now</button>
+    <button class="cms-btn" id="cmsExport">Export content (.json)</button>
+    <button class="cms-btn" id="cmsImportBtn">Import content (.json)</button>
+    <input type="file" id="cmsImportFile" class="cms-file" accept="application/json">
+    <button class="cms-btn" id="cmsReset">Reset to original text</button>
+    <button class="cms-btn" id="cmsLock">Lock editor</button>
+  </div>
+  <div class="cms-status" id="cmsStatus"></div>
+</div>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Mobile menu
+  var toggle = document.getElementById('menuToggle');
+  var navLinks = document.getElementById('navLinks');
+  toggle.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      navLinks.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Scroll reveal
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduceMotion){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // Active nav link on scroll
+  var sections = document.querySelectorAll('main section[id]');
+  var navItems = document.querySelectorAll('.nav-links a[data-nav]');
+  function onScroll(){
+    var pos = window.scrollY + 120;
+    var current = '';
+    sections.forEach(function(s){
+      if(pos >= s.offsetTop) current = s.id;
+    });
+    navItems.forEach(function(a){
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Terminal typewriter
+  var terminalLines = [
+    {type:'cmd', text:'idea find a real problem worth solving'},
+    {type:'out', text:'-> trust gaps in Lagos commerce: payments, delivery, vendors'},
+    {type:'cmd', text:'design shape the solution'},
+    {type:'out', text:'-> verified vendors + escrow + live tracking'},
+    {type:'cmd', text:'build taiky'},
+    {type:'out', text:'-> marketplace, payments, delivery, one platform'},
+    {type:'cmd', text:'ship taiky.netlify.app'},
+    {type:'out', text:'-> live, Phase 0, Lagos'}
+  ];
+  var body = document.getElementById('terminalBody');
+
+  function renderStatic(){
+    body.innerHTML = '';
+    terminalLines.forEach(function(l){
+      var div = document.createElement('div');
+      div.className = 'line';
+      div.style.opacity = 1;
+      div.style.transform = 'none';
+      if(l.type === 'cmd'){
+        div.innerHTML = '<span class="prompt">$</span> ' + l.text;
+      } else {
+        div.innerHTML = '<span class="comment">' + l.text + '</span>';
+      }
+      body.appendChild(div);
+    });
+    var cur = document.createElement('span');
+    cur.className = 'cursor';
+    body.appendChild(cur);
+  }
+
+  function typeLines(){
+    var i = 0;
+    function next(){
+      if(i >= terminalLines.length){
+        var cur = document.createElement('span');
+        cur.className = 'cursor';
+        body.appendChild(cur);
+        return;
+      }
+      var l = terminalLines[i];
+      var div = document.createElement('div');
+      div.className = 'line';
+      body.appendChild(div);
+      requestAnimationFrame(function(){
+        div.style.transition = 'opacity .4s ease, transform .4s ease';
+        div.style.opacity = 1;
+        div.style.transform = 'translateY(0)';
+      });
+      var prefix = l.type === 'cmd' ? '<span class="prompt">$</span> ' : '<span class="comment">';
+      var suffix = l.type === 'cmd' ? '' : '</span>';
+      var chars = l.text.split('');
+      var text = '';
+      var ci = 0;
+      var speed = l.type === 'cmd' ? 32 : 14;
+      function typeChar(){
+        if(ci < chars.length){
+          text += chars[ci];
+          div.innerHTML = prefix + text + suffix;
+          ci++;
+          setTimeout(typeChar, speed);
+        } else {
+          i++;
+          setTimeout(next, 260);
+        }
+      }
+      typeChar();
+    }
+    next();
+  }
+
+  if(reduceMotion){
+    renderStatic();
+  } else {
+    typeLines();
+  }
+
+  // Contact form
+  var form = document.getElementById('contactForm');
+  var successBox = document.getElementById('formSuccess');
+  var successText = document.getElementById('successText');
+  var copyBtn = document.getElementById('copyBtn');
+
+  function setInvalid(id, invalid){
+    var field = document.getElementById(id);
+    field.classList.toggle('invalid', invalid);
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var type = document.getElementById('type').value;
+    var message = document.getElementById('message').value.trim();
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    var valid = true;
+    setInvalid('f-name', name.length === 0); if(name.length === 0) valid = false;
+    setInvalid('f-email', !emailOk); if(!emailOk) valid = false;
+    setInvalid('f-type', type.length === 0); if(type.length === 0) valid = false;
+    setInvalid('f-message', message.length === 0); if(message.length === 0) valid = false;
+
+    if(!valid){
+      successBox.classList.remove('show');
+      return;
+    }
+
+    var summary = 'From: ' + name + ' (' + email + ')\nProject type: ' + type + '\n\n' + message;
+    successText.value = summary;
+    successBox.classList.add('show');
+    successBox.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block:'nearest'});
+  });
+
+  copyBtn.addEventListener('click', function(){
+    successText.select();
+    successText.setSelectionRange(0, 99999);
+    try{
+      navigator.clipboard.writeText(successText.value);
+      copyBtn.textContent = 'Copied';
+      setTimeout(function(){ copyBtn.textContent = 'Copy Message'; }, 1800);
+    }catch(err){
+      document.execCommand('copy');
+    }
+  });
+
+  // LinkedIn placeholder handling (no verified URL available)
+  ['linkedinLink','linkedinLink2'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el){
+      el.addEventListener('click', function(e){
+        e.preventDefault();
+      });
+      el.setAttribute('aria-disabled', 'true');
+      el.title = 'Add your LinkedIn URL here';
+    }
+  });
+
+  /* =========================================================
+     LIGHTWEIGHT CMS
+     Everything below lets Raymond edit page text and manage
+     the Updates log directly in the browser. There is no
+     backend, so "saving" writes to this browser's storage.
+     Export / Import (.json) is the reliable way to carry
+     edits between devices or into the deployed site.
+  ========================================================= */
+
+  var STORAGE_KEY = 'raymond-portfolio-content-v1';
+  var storageAvailable = true;
+  try{
+    window.localStorage.setItem('__test__','1');
+    window.localStorage.removeItem('__test__');
+  }catch(e){ storageAvailable = false; }
+
+  var defaultUpdates = [
+    { title: 'Portfolio site launched', date: 'Aug 2026', body: 'Shipped this portfolio, built to bring the real projects, GitHub history and Taiky under one roof.' }
+  ];
+
+  function loadContent(){
+    if(!storageAvailable) return { fields:{}, updates: defaultUpdates.slice() };
+    try{
+      var raw = window.localStorage.getItem(STORAGE_KEY);
+      if(!raw) return { fields:{}, updates: defaultUpdates.slice() };
+      var parsed = JSON.parse(raw);
+      return {
+        fields: parsed.fields || {},
+        updates: (parsed.updates && parsed.updates.length) ? parsed.updates : defaultUpdates.slice()
+      };
+    }catch(e){
+      return { fields:{}, updates: defaultUpdates.slice() };
+    }
+  }
+
+  var siteData = loadContent();
+
+  function persist(){
+    if(!storageAvailable){
+      setStatus('This browser is blocking local storage, so edits will only last for this session. Export to keep them.');
+      return;
+    }
+    try{
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
+      setStatus('Saved to this browser.');
+    }catch(e){
+      setStatus('Could not save, storage may be full.');
+    }
+  }
+
+  var statusEl = document.getElementById('cmsStatus');
+  var statusTimer;
+  function setStatus(msg){
+    if(!statusEl) return;
+    statusEl.textContent = msg;
+    clearTimeout(statusTimer);
+    statusTimer = setTimeout(function(){ statusEl.textContent = ''; }, 3200);
+  }
+
+  // Apply any saved field overrides to the page
+  function applyFields(){
+    document.querySelectorAll('[data-ck]').forEach(function(el){
+      var key = el.getAttribute('data-ck');
+      if(siteData.fields[key] !== undefined){
+        el.innerHTML = siteData.fields[key];
+      }
+    });
+  }
+  applyFields();
+
+  // Save a field's current content on edit
+  document.querySelectorAll('[data-ck]').forEach(function(el){
+    el.addEventListener('blur', function(){
+      var key = el.getAttribute('data-ck');
+      siteData.fields[key] = el.innerHTML;
+      persist();
+    });
+  });
+
+  // Render updates
+  var updateList = document.getElementById('updateList');
+  var updateEmpty = document.getElementById('updateEmpty');
+
+  function renderUpdates(){
+    updateList.innerHTML = '';
+    if(siteData.updates.length === 0){
+      updateEmpty.classList.add('show-in-edit');
+    } else {
+      updateEmpty.classList.remove('show-in-edit');
+    }
+    siteData.updates.forEach(function(u, idx){
+      var item = document.createElement('article');
+      item.className = 'update-item reveal in';
+      item.innerHTML =
+        '<div class="update-date">' + escapeHtml(u.date) + '</div>' +
+        '<div class="update-body">' +
+          '<h3>' + escapeHtml(u.title) + '</h3>' +
+          '<p>' + escapeHtml(u.body) + '</p>' +
+          '<button type="button" class="update-del" data-idx="' + idx + '">Remove</button>' +
+        '</div>';
+      updateList.appendChild(item);
+    });
+    updateList.querySelectorAll('.update-del').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var i = parseInt(btn.getAttribute('data-idx'), 10);
+        siteData.updates.splice(i, 1);
+        persist();
+        renderUpdates();
+      });
+    });
+  }
+
+  function escapeHtml(str){
+    var div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  renderUpdates();
+
+  document.getElementById('nuAdd').addEventListener('click', function(){
+    var title = document.getElementById('nuTitle').value.trim();
+    var date = document.getElementById('nuDate').value.trim();
+    var body = document.getElementById('nuBody').value.trim();
+    if(!title || !body){
+      setStatus('Add a title and a short note first.');
+      return;
+    }
+    siteData.updates.unshift({ title: title, date: date || 'Undated', body: body });
+    document.getElementById('nuTitle').value = '';
+    document.getElementById('nuDate').value = '';
+    document.getElementById('nuBody').value = '';
+    persist();
+    renderUpdates();
+  });
+
+  // Edit mode toggle
+  var cmsToggle = document.getElementById('cmsToggle');
+  var cmsPanel = document.getElementById('cmsPanel');
+  var cmsSwitch = document.getElementById('cmsSwitch');
+
+  cmsToggle.addEventListener('click', function(){
+    cmsPanel.classList.toggle('open');
+  });
+
+  function setEditMode(on){
+    document.body.classList.toggle('edit-mode', on);
+    cmsSwitch.classList.toggle('on', on);
+    cmsSwitch.setAttribute('aria-pressed', on ? 'true' : 'false');
+    document.querySelectorAll('[data-ck]').forEach(function(el){
+      el.setAttribute('contenteditable', on ? 'true' : 'false');
+    });
+  }
+  setEditMode(false);
+
+  cmsSwitch.addEventListener('click', function(){
+    setEditMode(!document.body.classList.contains('edit-mode'));
+  });
+
+  document.getElementById('cmsSave').addEventListener('click', persist);
+
+  document.getElementById('cmsExport').addEventListener('click', function(){
+    var blob = new Blob([JSON.stringify(siteData, null, 2)], {type:'application/json'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'raymond-portfolio-content.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    setStatus('Exported. Keep this file, or hand it to a developer to wire into the live site.');
+  });
+
+  /* =========================================================
+     LOCK / UNLOCK
+     The editor stays hidden behind a nearly invisible dot in
+     the corner. Opening it asks for a fingerprint (via the
+     device's own Face ID / Touch ID / Windows Hello, through
+     WebAuthn) or a passcode as a fallback. The first time it's
+     opened on a device, it walks through setup instead.
+     There is no server here, so this is a local gate for your
+     own devices, not a login system with central control.
+     Fingerprint unlock needs HTTPS or localhost to work at all.
+  ========================================================= */
+
+  var PASSCODE_KEY = 'raymond-cms-passcode-hash';
+  var WEBAUTHN_KEY = 'raymond-cms-webauthn-id';
+  var UNLOCK_KEY = 'raymond-cms-unlocked';
+
+  var lockDot = document.getElementById('cmsLockDot');
+  var lockOverlay = document.getElementById('cmsLockOverlay');
+  var lockBox = document.getElementById('cmsLockBox');
+
+  function hasWebAuthn(){
+    return !!(window.PublicKeyCredential && navigator.credentials);
+  }
+
+  function randomBytes(len){
+    var arr = new Uint8Array(len);
+    window.crypto.getRandomValues(arr);
+    return arr;
+  }
+
+  function bufToB64(buf){
+    var bytes = new Uint8Array(buf);
+    var str = '';
+    for(var i=0; i<bytes.length; i++){ str += String.fromCharCode(bytes[i]); }
+    return btoa(str);
+  }
+
+  function b64ToBuf(b64){
+    var str = atob(b64);
+    var bytes = new Uint8Array(str.length);
+    for(var i=0; i<str.length; i++){ bytes[i] = str.charCodeAt(i); }
+    return bytes.buffer;
+  }
+
+  function sha256Hex(text){
+    var enc = new TextEncoder().encode(text);
+    return window.crypto.subtle.digest('SHA-256', enc).then(function(hash){
+      var bytes = new Uint8Array(hash);
+      var hex = '';
+      bytes.forEach(function(b){ hex += b.toString(16).padStart(2,'0'); });
+      return hex;
+    });
+  }
+
+  function isSetUp(){
+    return !!(storageAvailable && window.localStorage.getItem(PASSCODE_KEY));
+  }
+
+  function markUnlocked(){
+    try{ window.sessionStorage.setItem(UNLOCK_KEY, '1'); }catch(e){}
+    lockOverlay.classList.remove('open');
+    lockDot.classList.add('hidden');
+    cmsToggle.style.display = 'flex';
+    cmsPanel.classList.add('open');
+  }
+
+  function lockEditor(){
+    try{ window.sessionStorage.removeItem(UNLOCK_KEY); }catch(e){}
+    cmsToggle.style.display = 'none';
+    cmsPanel.classList.remove('open');
+    setEditMode(false);
+    lockDot.classList.remove('hidden');
+  }
+
+  function isUnlockedThisSession(){
+    try{ return window.sessionStorage.getItem(UNLOCK_KEY) === '1'; }catch(e){ return false; }
+  }
+
+  function renderUnlockView(){
+    var canBio = hasWebAuthn() && !!window.localStorage.getItem(WEBAUTHN_KEY);
+    lockBox.innerHTML =
+      '<h4>Site owner sign in</h4>' +
+      '<p class="sub">Editing is locked for everyone else. Unlock it with your fingerprint or your passcode.</p>' +
+      (canBio ? '<div class="cms-lock-actions"><button class="cms-lock-btn primary" id="bioUnlockBtn">Unlock with fingerprint / Face ID</button></div><div class="cms-lock-divider">or</div>' : '') +
+      '<input type="password" id="passInput" placeholder="Passcode" autocomplete="off">' +
+      '<div class="cms-lock-actions">' +
+        '<button class="cms-lock-btn primary" id="passUnlockBtn">Unlock with passcode</button>' +
+        '<button class="cms-lock-btn" id="lockCancelBtn">Cancel</button>' +
+      '</div>' +
+      '<div class="cms-lock-msg" id="lockMsg"></div>';
+
+    var msg = document.getElementById('lockMsg');
+
+    if(canBio){
+      document.getElementById('bioUnlockBtn').addEventListener('click', function(){
+        msg.textContent = 'Checking...';
+        var credId = b64ToBuf(window.localStorage.getItem(WEBAUTHN_KEY));
+        navigator.credentials.get({
+          publicKey:{
+            challenge: randomBytes(32),
+            allowCredentials: [{ id: credId, type: 'public-key' }],
+            userVerification: 'required',
+            timeout: 60000
+          }
+        }).then(function(){
+          markUnlocked();
+        }).catch(function(){
+          msg.textContent = 'Fingerprint check failed or was cancelled. Try the passcode instead.';
+        });
+      });
+    }
+
+    document.getElementById('passUnlockBtn').addEventListener('click', function(){
+      var val = document.getElementById('passInput').value;
+      if(!val){ msg.textContent = 'Enter your passcode.'; return; }
+      sha256Hex(val).then(function(hex){
+        if(hex === window.localStorage.getItem(PASSCODE_KEY)){
+          markUnlocked();
+        } else {
+          msg.textContent = 'Wrong passcode.';
+        }
+      });
+    });
+
+    document.getElementById('lockCancelBtn').addEventListener('click', function(){
+      lockOverlay.classList.remove('open');
+    });
+  }
+
+  function renderSetupView(){
+    var canBio = hasWebAuthn();
+    lockBox.innerHTML =
+      '<h4>Set up the site editor</h4>' +
+      '<p class="sub">This runs once per device. Choose a passcode, and optionally add fingerprint unlock too.</p>' +
+      '<input type="password" id="setPass1" placeholder="Choose a passcode" autocomplete="off">' +
+      '<input type="password" id="setPass2" placeholder="Confirm passcode" autocomplete="off">' +
+      '<div class="cms-lock-actions">' +
+        (canBio ? '<button class="cms-lock-btn" id="setBioBtn">Also register fingerprint / Face ID</button>' : '') +
+        '<button class="cms-lock-btn primary" id="setSaveBtn">Save and unlock</button>' +
+        '<button class="cms-lock-btn" id="setCancelBtn">Cancel</button>' +
+      '</div>' +
+      '<div class="cms-lock-msg" id="lockMsg"></div>';
+
+    var msg = document.getElementById('lockMsg');
+    var bioRegistered = false;
+
+    if(canBio){
+      document.getElementById('setBioBtn').addEventListener('click', function(){
+        msg.textContent = 'Follow your device prompt...';
+        navigator.credentials.create({
+          publicKey:{
+            challenge: randomBytes(32),
+            rp: { name: 'Raymond Portfolio' },
+            user: { id: randomBytes(16), name: 'raymond', displayName: 'Raymond' },
+            pubKeyCredParams: [{ type:'public-key', alg:-7 }, { type:'public-key', alg:-257 }],
+            authenticatorSelection: { authenticatorAttachment:'platform', userVerification:'required' },
+            timeout: 60000
+          }
+        }).then(function(cred){
+          window.localStorage.setItem(WEBAUTHN_KEY, bufToB64(cred.rawId));
+          bioRegistered = true;
+          msg.textContent = 'Fingerprint registered. Set a passcode too, then save.';
+        }).catch(function(){
+          msg.textContent = 'Could not register fingerprint on this device. A passcode alone still works.';
+        });
+      });
+    }
+
+    document.getElementById('setSaveBtn').addEventListener('click', function(){
+      var p1 = document.getElementById('setPass1').value;
+      var p2 = document.getElementById('setPass2').value;
+      if(p1.length < 4){ msg.textContent = 'Use at least 4 characters.'; return; }
+      if(p1 !== p2){ msg.textContent = 'Passcodes do not match.'; return; }
+      sha256Hex(p1).then(function(hex){
+        if(!storageAvailable){
+          msg.textContent = 'This browser is blocking local storage, so unlock cannot be saved here.';
+          return;
+        }
+        window.localStorage.setItem(PASSCODE_KEY, hex);
+        markUnlocked();
+      });
+    });
+
+    document.getElementById('setCancelBtn').addEventListener('click', function(){
+      lockOverlay.classList.remove('open');
+    });
+  }
+
+  function openLock(){
+    lockOverlay.classList.add('open');
+    if(isSetUp()){ renderUnlockView(); } else { renderSetupView(); }
+  }
+
+  lockDot.addEventListener('click', openLock);
+  lockOverlay.addEventListener('click', function(e){
+    if(e.target === lockOverlay) lockOverlay.classList.remove('open');
+  });
+
+  document.getElementById('cmsLock').addEventListener('click', function(){
+    lockOverlay.classList.remove('open');
+    lockEditor();
+  });
+
+  // Restore state on load
+  if(isUnlockedThisSession()){
+    lockDot.classList.add('hidden');
+    cmsToggle.style.display = 'flex';
+  } else {
+    cmsToggle.style.display = 'none';
+  }
+
+  var importInput = document.getElementById('cmsImportFile');
+  document.getElementById('cmsImportBtn').addEventListener('click', function(){
+    importInput.click();
+  });
+  importInput.addEventListener('change', function(){
+    var file = importInput.files[0];
+    if(!file) return;
+    var reader = new FileReader();
+    reader.onload = function(){
+      try{
+        var parsed = JSON.parse(reader.result);
+        siteData = {
+          fields: parsed.fields || {},
+          updates: parsed.updates || []
+        };
+        applyFields();
+        renderUpdates();
+        persist();
+        setStatus('Content imported.');
+      }catch(e){
+        setStatus('That file could not be read as content JSON.');
+      }
+    };
+    reader.readAsText(file);
+    importInput.value = '';
+  });
+
+  document.getElementById('cmsReset').addEventListener('click', function(){
+    if(!window.confirm('Reset all edits and updates back to the original site text?')) return;
+    siteData = { fields:{}, updates: defaultUpdates.slice() };
+    if(storageAvailable) window.localStorage.removeItem(STORAGE_KEY);
+    document.querySelectorAll('[data-ck]').forEach(function(el){
+      el.innerHTML = el.getAttribute('data-original') || el.innerHTML;
+    });
+    location.reload();
+  });
+
+})();
+</script>
+
+</body>
+</html>
