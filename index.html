@@ -44,7 +44,8 @@
   }
 
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; overflow-x:hidden;}
+  body{overflow-x:hidden;}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
@@ -65,6 +66,7 @@
   input, textarea, select{font-family:inherit; font-size:1rem;}
 
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  @media (max-width:480px){ .wrap{padding:0 20px;} }
 
   a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
     outline:2px solid var(--accent);
@@ -96,7 +98,7 @@
   }
 
   .section{padding:110px 0;}
-  @media (max-width:720px){ .section{padding:72px 0;} }
+  @media (max-width:720px){ .section{padding:64px 0;} }
 
   .section-head{max-width:640px; margin-bottom:56px;}
   .section-head h2{font-size:clamp(1.9rem, 3.2vw, 2.6rem); margin-bottom:14px;}
@@ -165,16 +167,33 @@
 
   @media (max-width:880px){
     .nav-links{
-      position:fixed; inset:74px 0 0 0; background:var(--navy-deep);
-      flex-direction:column; justify-content:center; gap:30px;
+      position:fixed; top:0; right:0; bottom:0;
+      width:min(320px, 82vw);
+      background:linear-gradient(180deg, var(--navy-deep), #041220);
+      flex-direction:column; align-items:flex-start; justify-content:flex-start;
+      gap:0; padding:100px 32px 40px;
       transform:translateX(100%); transition:transform .4s var(--ease);
+      box-shadow:-24px 0 60px -20px rgba(6,26,46,0.5);
+      border-left:1px solid rgba(255,255,255,0.08);
+      overflow-y:auto;
     }
     .nav-links.open{transform:translateX(0);}
-    .nav-links a{color:#fff; font-size:1.3rem; font-family:var(--font-display);}
-    .nav-links a::after{background:var(--accent);}
+    .nav-links a{
+      color:#EAF1FF; font-size:1.15rem; font-family:var(--font-display);
+      width:100%; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.09);
+    }
+    .nav-links li{width:100%;}
+    .nav-links a::after{display:none;}
+    .nav-links a.active{color:var(--accent);}
     .nav-cta .btn-ghost{display:none;}
     .menu-toggle{display:block;}
+    .nav-scrim{
+      content:""; position:fixed; inset:0; background:rgba(6,26,46,0.5);
+      z-index:499; opacity:0; pointer-events:none; transition:opacity .35s var(--ease);
+    }
+    .nav-scrim.open{opacity:1; pointer-events:auto;}
   }
+  @media (min-width:881px){ .nav-scrim{display:none;} }
 
   /* ---------- Hero ---------- */
   .hero{
@@ -184,6 +203,7 @@
       var(--bg-soft);
     border-bottom:1px solid var(--line);
   }
+  @media (max-width:720px){ .hero{padding:56px 0 60px;} }
   .hero-grid{
     display:grid; grid-template-columns:1.05fr 0.95fr; gap:64px; align-items:center;
   }
@@ -235,6 +255,11 @@
     font-size:0.88rem;
     color:#D9E4F5;
     min-height:220px;
+    overflow-wrap:break-word;
+    word-break:break-word;
+  }
+  @media (max-width:480px){
+    .terminal-body{ font-size:0.78rem; padding:20px 16px 24px; min-height:190px; }
   }
   .terminal-body .line{margin-bottom:14px; opacity:0; transform:translateY(4px);}
   .terminal-body .prompt{color:#5B8DEF;}
@@ -264,6 +289,7 @@
     background:var(--navy-deep); color:#fff;
   }
   .philosophy .wrap{padding:100px 28px;}
+  @media (max-width:720px){ .philosophy .wrap{padding:60px 20px;} }
   .philosophy blockquote{
     font-family:var(--font-display);
     font-size:clamp(1.8rem, 4vw, 3.1rem);
@@ -525,26 +551,55 @@
   /* ---------- Portrait ---------- */
   .about-grid{grid-template-columns:0.75fr 1.25fr;}
   .portrait-col{position:sticky; top:100px; align-self:start;}
-  @media (max-width:880px){ .portrait-col{position:static;} }
+  @media (max-width:880px){ .portrait-col{position:static; max-width:360px; margin:0 auto;} }
+
+  .portrait-wrap{
+    position:relative;
+    margin-top:32px;
+    padding:0 22px 22px 0;
+  }
+  .portrait-wrap::before{
+    content:"";
+    position:absolute;
+    top:22px; right:0; bottom:0; left:22px;
+    background:var(--accent);
+    border-radius:var(--radius-m);
+    z-index:0;
+  }
   .portrait-frame{
+    position:relative;
+    z-index:1;
     border-radius:var(--radius-m);
     overflow:hidden;
-    border:1px solid var(--line);
     background:var(--navy-deep);
-    box-shadow:0 24px 50px -24px rgba(6,26,46,0.4);
+    box-shadow:0 26px 50px -24px rgba(6,26,46,0.45);
+    aspect-ratio:3/4;
+    transform:perspective(900px) rotateX(0deg) rotateY(0deg);
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+    will-change:transform;
   }
   .portrait-frame img{
-    width:100%; display:block;
-    filter:grayscale(0.15) contrast(1.03);
-    transition:filter .4s var(--ease);
+    width:100%; height:100%; display:block; object-fit:cover; object-position:center 18%;
   }
-  .portrait-frame:hover img{filter:grayscale(0); }
-  .portrait-caption{
-    display:flex; justify-content:space-between; align-items:center;
-    padding:14px 18px; border-top:1px solid rgba(255,255,255,0.08);
-    font-family:var(--font-mono); font-size:0.76rem; color:rgba(255,255,255,0.55);
+  .portrait-badge{
+    position:absolute; z-index:2; left:16px; bottom:16px; right:16px;
+    display:flex; justify-content:space-between; align-items:center; gap:10px;
+    padding:12px 16px; border-radius:8px;
+    background:rgba(6,26,46,0.55);
+    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,0.14);
+    font-family:var(--font-mono); font-size:0.74rem; color:rgba(255,255,255,0.7);
   }
-  .portrait-caption strong{color:#fff; font-family:var(--font-mono); font-weight:500;}
+  .portrait-badge strong{display:block; color:#fff; font-size:0.85rem; font-weight:500; font-family:var(--font-body); margin-bottom:2px;}
+  .portrait-tag{
+    position:absolute; z-index:2; top:16px; left:16px;
+    font-family:var(--font-mono); font-size:0.72rem; color:#fff;
+    background:rgba(6,26,46,0.55); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:100px; padding:6px 12px;
+    display:flex; align-items:center; gap:6px;
+  }
+  .portrait-tag .d{width:6px; height:6px; border-radius:50%; background:#22C55E;}
 
   /* ---------- Updates ---------- */
   .updates{border-top:1px solid var(--line);}
@@ -580,7 +635,7 @@
   body.edit-mode .update-empty.show-in-edit{display:block;}
 
   .cms-toggle{
-    position:fixed; right:20px; bottom:20px; z-index:900;
+    position:fixed; right:20px; bottom:calc(64px + env(safe-area-inset-bottom, 0px)); z-index:900;
     width:46px; height:46px; border-radius:50%;
     background:var(--navy-deep); color:#fff; border:1px solid rgba(255,255,255,0.15);
     display:flex; align-items:center; justify-content:center;
@@ -591,12 +646,13 @@
   .cms-toggle:hover{transform:scale(1.06); background:var(--accent);}
 
   .cms-panel{
-    position:fixed; right:20px; bottom:78px; z-index:900;
+    position:fixed; right:20px; bottom:calc(122px + env(safe-area-inset-bottom, 0px)); z-index:900;
     width:320px; max-width:calc(100vw - 40px);
     background:#fff; border:1px solid var(--line-strong); border-radius:var(--radius-m);
     box-shadow:0 30px 60px -20px rgba(6,26,46,0.35);
     padding:20px; display:none;
     font-family:var(--font-body);
+    max-height:calc(100vh - 160px); overflow-y:auto;
   }
   .cms-panel.open{display:block;}
   .cms-panel h4{font-size:0.95rem; margin-bottom:4px;}
@@ -635,7 +691,7 @@
 
   /* ---------- CMS lock ---------- */
   .cms-lock-dot{
-    position:fixed; right:24px; bottom:24px; z-index:900;
+    position:fixed; right:24px; bottom:calc(64px + env(safe-area-inset-bottom, 0px)); z-index:900;
     width:10px; height:10px; border-radius:50%;
     background:var(--navy-deep); opacity:0.14; border:none; padding:0;
     transition:opacity .2s var(--ease), transform .2s var(--ease);
@@ -673,8 +729,8 @@
   .cms-lock-divider::before, .cms-lock-divider::after{content:""; flex:1; height:1px; background:var(--line);}
 
   /* ---------- Reveal ---------- */
-  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s var(--ease), transform .7s var(--ease);}
-  .reveal.in{opacity:1; transform:translateY(0);}
+  .reveal{opacity:0; transform:translateY(22px) scale(0.985); transition:opacity .6s var(--ease), transform .6s var(--ease);}
+  .reveal.in{opacity:1; transform:translateY(0) scale(1);}
 </style>
 </head>
 <body>
@@ -702,6 +758,7 @@
     </div>
   </nav>
 </header>
+<div class="nav-scrim" id="navScrim"></div>
 
 <main id="main">
 
@@ -741,11 +798,13 @@
       <div class="reveal portrait-col">
         <p class="eyebrow">About</p>
         <h2 data-ck="about-heading">Building things, quickly and on purpose.</h2>
-        <div class="portrait-frame" style="margin-top:28px;">
-          <img src="raymond.jpg" alt="Portrait of Ogundimbola Adesoji Raymond" width="900" height="1200" loading="lazy">
-          <div class="portrait-caption">
-            <strong>Raymond Ogundimbola</strong>
-            <span>Founder, Taiky</span>
+        <div class="portrait-wrap" id="portraitWrap">
+          <div class="portrait-frame" id="portraitFrame">
+            <img src="raymond.jpg" alt="Portrait of Ogundimbola Adesoji Raymond" width="900" height="1200" loading="lazy">
+            <span class="portrait-tag"><span class="d"></span>Building Taiky</span>
+            <div class="portrait-badge">
+              <span><strong>Raymond Ogundimbola</strong>Founder &amp; CEO, Taiky</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1141,7 +1200,11 @@
       </div>
 
       <div class="reveal">
-        <form class="form-card" id="contactForm" novalidate>
+        <form class="form-card" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="contact">
+          <p style="position:absolute; left:-9999px;" aria-hidden="true">
+            <label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+          </p>
           <div class="field" id="f-name">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" autocomplete="name">
@@ -1168,14 +1231,14 @@
             <textarea id="message" name="message"></textarea>
             <span class="err">Please add a short message.</span>
           </div>
-          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Start a Conversation</button>
-          <p class="form-note">This form checks your details but isn't connected to an email service yet, so nothing sends automatically. Submitting prepares your message below to copy and send directly.</p>
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;" id="submitBtn">Start a Conversation</button>
+          <p class="form-note" id="formNote">This goes straight to Raymond, no third party in between.</p>
 
           <div class="form-success" id="formSuccess">
-            <h4>Your message is ready</h4>
-            <p>Copy this and send it over on GitHub, or paste it into your own email once a direct address is added here.</p>
-            <textarea id="successText" readonly></textarea>
-            <button type="button" class="btn btn-ghost" id="copyBtn">Copy Message</button>
+            <h4 id="successHeading">Message sent</h4>
+            <p id="successBody">Thanks for reaching out, Raymond will get back to you soon.</p>
+            <textarea id="successText" readonly style="display:none;"></textarea>
+            <button type="button" class="btn btn-ghost" id="copyBtn" style="display:none;">Copy Message</button>
           </div>
         </form>
       </div>
@@ -1247,21 +1310,39 @@
   // Mobile menu
   var toggle = document.getElementById('menuToggle');
   var navLinks = document.getElementById('navLinks');
+  var navScrim = document.getElementById('navScrim');
+
+  function closeMenu(){
+    navLinks.classList.remove('open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    navScrim.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
   toggle.addEventListener('click', function(){
     var open = navLinks.classList.toggle('open');
     toggle.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    navScrim.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
   });
+  navScrim.addEventListener('click', closeMenu);
   navLinks.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      navLinks.classList.remove('open');
-      toggle.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-    });
+    a.addEventListener('click', closeMenu);
   });
 
-  // Scroll reveal
+  // Scroll reveal, staggered by position within its group
   var revealEls = document.querySelectorAll('.reveal');
+  revealEls.forEach(function(el){
+    var siblings = Array.prototype.filter.call(el.parentElement.children, function(c){
+      return c.classList.contains('reveal');
+    });
+    var idx = siblings.indexOf(el);
+    var delay = Math.min(idx * 70, 420);
+    el.style.transitionDelay = delay + 'ms';
+  });
+
   if('IntersectionObserver' in window && !reduceMotion){
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
@@ -1274,6 +1355,26 @@
     revealEls.forEach(function(el){ io.observe(el); });
   } else {
     revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // Portrait tilt, follows the cursor for a subtle, realistic depth effect
+  var portraitFrame = document.getElementById('portraitFrame');
+  if(portraitFrame && !reduceMotion && window.matchMedia('(hover: hover)').matches){
+    var ptRAF = null;
+    portraitFrame.addEventListener('mousemove', function(e){
+      var rect = portraitFrame.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width - 0.5;
+      var y = (e.clientY - rect.top) / rect.height - 0.5;
+      if(ptRAF) cancelAnimationFrame(ptRAF);
+      ptRAF = requestAnimationFrame(function(){
+        portraitFrame.style.transform =
+          'perspective(900px) rotateX(' + (y * -6) + 'deg) rotateY(' + (x * 8) + 'deg) scale(1.015)';
+      });
+    });
+    portraitFrame.addEventListener('mouseleave', function(){
+      if(ptRAF) cancelAnimationFrame(ptRAF);
+      portraitFrame.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)';
+    });
   }
 
   // Active nav link on scroll
@@ -1373,12 +1474,41 @@
   // Contact form
   var form = document.getElementById('contactForm');
   var successBox = document.getElementById('formSuccess');
+  var successHeading = document.getElementById('successHeading');
+  var successBody = document.getElementById('successBody');
   var successText = document.getElementById('successText');
   var copyBtn = document.getElementById('copyBtn');
+  var submitBtn = document.getElementById('submitBtn');
 
   function setInvalid(id, invalid){
     var field = document.getElementById(id);
     field.classList.toggle('invalid', invalid);
+  }
+
+  function encodeForm(data){
+    return Object.keys(data).map(function(key){
+      return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]);
+    }).join('&');
+  }
+
+  function showFallback(summary){
+    successHeading.textContent = 'Your message is ready';
+    successBody.textContent = "Couldn't reach the network just now. Copy this and send it over on GitHub, or by email directly.";
+    successText.style.display = 'block';
+    successText.value = summary;
+    copyBtn.style.display = 'inline-flex';
+    successBox.classList.add('show');
+    successBox.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block:'nearest'});
+  }
+
+  function showSent(){
+    successHeading.textContent = 'Message sent';
+    successBody.textContent = 'Thanks for reaching out, Raymond will get back to you soon.';
+    successText.style.display = 'none';
+    copyBtn.style.display = 'none';
+    successBox.classList.add('show');
+    successBox.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block:'nearest'});
+    form.reset();
   }
 
   form.addEventListener('submit', function(e){
@@ -1401,9 +1531,32 @@
     }
 
     var summary = 'From: ' + name + ' (' + email + ')\nProject type: ' + type + '\n\n' + message;
-    successText.value = summary;
-    successBox.classList.add('show');
-    successBox.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block:'nearest'});
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encodeForm({
+        'form-name': 'contact',
+        name: name,
+        email: email,
+        type: type,
+        message: message
+      })
+    }).then(function(res){
+      submitBtn.textContent = 'Start a Conversation';
+      submitBtn.disabled = false;
+      if(res.ok){
+        showSent();
+      } else {
+        showFallback(summary);
+      }
+    }).catch(function(){
+      submitBtn.textContent = 'Start a Conversation';
+      submitBtn.disabled = false;
+      showFallback(summary);
+    });
   });
 
   copyBtn.addEventListener('click', function(){
