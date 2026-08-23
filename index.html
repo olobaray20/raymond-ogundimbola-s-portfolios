@@ -567,7 +567,7 @@
   }
 
   /* ---------- Portrait ---------- */
-  .about-grid{grid-template-columns:0.75fr 1.25fr;}
+  @media (min-width:881px){ .about-grid{grid-template-columns:0.75fr 1.25fr;} }
   .portrait-col{position:sticky; top:100px; align-self:start;}
   @media (max-width:880px){ .portrait-col{position:static; max-width:340px; margin:0 auto;} }
 
