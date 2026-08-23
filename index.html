@@ -163,13 +163,18 @@
 
   @media (max-width:880px){
     .nav-links{
-      position:fixed; inset:0;
-      width:100%;
+      position:fixed;
+      top:0; left:0; right:0; bottom:0;
+      width:100vw;
+      height:100vh;
+      height:100dvh;
+      z-index:900;
       background:linear-gradient(160deg, var(--navy-deep) 0%, #041220 100%);
       flex-direction:column; align-items:stretch; justify-content:center;
       gap:0; padding:32px 36px;
       transform:translateX(100%); transition:transform .45s var(--ease);
       overflow-y:auto;
+      -webkit-overflow-scrolling:touch;
     }
     .nav-links.open{transform:translateX(0);}
     .nav-links::before{
