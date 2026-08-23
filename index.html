@@ -92,10 +92,6 @@
     gap:10px;
     margin-bottom:14px;
   }
-  .eyebrow::before{
-    content:"";
-    width:22px; height:1px; background:var(--accent);
-  }
 
   .section{padding:110px 0;}
   @media (max-width:720px){ .section{padding:64px 0;} }
@@ -161,39 +157,62 @@
   .menu-toggle span:nth-child(1){top:0;}
   .menu-toggle span:nth-child(2){top:10px;}
   .menu-toggle span:nth-child(3){top:20px;}
-  .menu-toggle.open span:nth-child(1){transform:translateY(10px) rotate(45deg);}
+  .menu-toggle.open span:nth-child(1){transform:translateY(10px) rotate(45deg); background:#fff;}
   .menu-toggle.open span:nth-child(2){opacity:0;}
-  .menu-toggle.open span:nth-child(3){transform:translateY(-10px) rotate(-45deg);}
+  .menu-toggle.open span:nth-child(3){transform:translateY(-10px) rotate(-45deg); background:#fff;}
 
   @media (max-width:880px){
     .nav-links{
-      position:fixed; top:0; right:0; bottom:0;
-      width:min(320px, 82vw);
-      background:linear-gradient(180deg, var(--navy-deep), #041220);
-      flex-direction:column; align-items:flex-start; justify-content:flex-start;
-      gap:0; padding:100px 32px 40px;
-      transform:translateX(100%); transition:transform .4s var(--ease);
-      box-shadow:-24px 0 60px -20px rgba(6,26,46,0.5);
-      border-left:1px solid rgba(255,255,255,0.08);
+      position:fixed; inset:0;
+      width:100%;
+      background:linear-gradient(160deg, var(--navy-deep) 0%, #041220 100%);
+      flex-direction:column; align-items:stretch; justify-content:center;
+      gap:0; padding:32px 36px;
+      transform:translateX(100%); transition:transform .45s var(--ease);
       overflow-y:auto;
     }
     .nav-links.open{transform:translateX(0);}
+    .nav-links::before{
+      content:"MENU";
+      position:absolute; top:32px; left:36px;
+      font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.18em;
+      color:rgba(255,255,255,0.35);
+    }
+    .nav-links li{
+      width:100%; list-style:none;
+      opacity:0; transform:translateX(18px);
+      transition:opacity .45s var(--ease), transform .45s var(--ease);
+    }
+    .nav-links.open li{opacity:1; transform:translateX(0);}
+    .nav-links li:nth-child(1){transition-delay:.08s;}
+    .nav-links li:nth-child(2){transition-delay:.13s;}
+    .nav-links li:nth-child(3){transition-delay:.18s;}
+    .nav-links li:nth-child(4){transition-delay:.23s;}
+    .nav-links li:nth-child(5){transition-delay:.28s;}
+    .nav-links li:nth-child(6){transition-delay:.33s;}
+    .nav-links li:nth-child(7){transition-delay:.38s;}
+    .nav-links li:nth-child(8){transition-delay:.43s;}
     .nav-links a{
-      color:#EAF1FF; font-size:1.15rem; font-family:var(--font-display);
-      width:100%; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.09);
+      color:#EAF1FF; font-size:1.55rem; font-family:var(--font-display); font-weight:600;
+      width:100%; padding:13px 0; border-bottom:1px solid rgba(255,255,255,0.09);
+      display:flex; align-items:baseline; gap:14px;
+      transition:color .2s var(--ease), padding-left .2s var(--ease);
     }
-    .nav-links li{width:100%;}
+    .nav-links a::before{
+      content:counter(navidx, decimal-leading-zero);
+      counter-increment:navidx;
+      font-family:var(--font-mono); font-size:0.78rem; font-weight:400;
+      color:var(--accent);
+    }
+    .nav-links{counter-reset:navidx;}
     .nav-links a::after{display:none;}
+    .nav-links a:active{padding-left:6px;}
     .nav-links a.active{color:var(--accent);}
+    .nav-links a.active::before{color:#fff;}
     .nav-cta .btn-ghost{display:none;}
-    .menu-toggle{display:block;}
-    .nav-scrim{
-      content:""; position:fixed; inset:0; background:rgba(6,26,46,0.5);
-      z-index:499; opacity:0; pointer-events:none; transition:opacity .35s var(--ease);
-    }
-    .nav-scrim.open{opacity:1; pointer-events:auto;}
+    .menu-toggle{display:block; z-index:1000;}
+    body.menu-open{overflow:hidden;}
   }
-  @media (min-width:881px){ .nav-scrim{display:none;} }
 
   /* ---------- Hero ---------- */
   .hero{
@@ -439,7 +458,6 @@
     margin-bottom:36px; position:relative;
   }
   .taiky-top .eyebrow{color:#8FB4FF;}
-  .taiky-top .eyebrow::before{background:#8FB4FF;}
   .taiky h2{color:#fff; font-size:clamp(1.9rem, 3.4vw, 2.7rem); max-width:600px;}
   .taiky-lead{
     font-family:var(--font-display); font-size:1.2rem; color:#C7D8F5; max-width:600px; margin-bottom:36px;
@@ -551,17 +569,17 @@
   /* ---------- Portrait ---------- */
   .about-grid{grid-template-columns:0.75fr 1.25fr;}
   .portrait-col{position:sticky; top:100px; align-self:start;}
-  @media (max-width:880px){ .portrait-col{position:static; max-width:360px; margin:0 auto;} }
+  @media (max-width:880px){ .portrait-col{position:static; max-width:340px; margin:0 auto;} }
 
-  .portrait-wrap{
+  .portrait-photo{
     position:relative;
     margin-top:32px;
-    padding:0 22px 22px 0;
+    padding:0 18px 18px 0;
   }
-  .portrait-wrap::before{
+  .portrait-photo::before{
     content:"";
     position:absolute;
-    top:22px; right:0; bottom:0; left:22px;
+    inset:18px 0 0 18px;
     background:var(--accent);
     border-radius:var(--radius-m);
     z-index:0;
@@ -579,27 +597,19 @@
     will-change:transform;
   }
   .portrait-frame img{
-    width:100%; height:100%; display:block; object-fit:cover; object-position:center 18%;
+    width:100%; height:100%; display:block; object-fit:cover; object-position:center 15%;
   }
-  .portrait-badge{
-    position:absolute; z-index:2; left:16px; bottom:16px; right:16px;
-    display:flex; justify-content:space-between; align-items:center; gap:10px;
-    padding:12px 16px; border-radius:8px;
-    background:rgba(6,26,46,0.55);
-    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-    border:1px solid rgba(255,255,255,0.14);
-    font-family:var(--font-mono); font-size:0.74rem; color:rgba(255,255,255,0.7);
+  .portrait-info{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    margin-top:16px; padding-top:16px; border-top:1px solid var(--line);
   }
-  .portrait-badge strong{display:block; color:#fff; font-size:0.85rem; font-weight:500; font-family:var(--font-body); margin-bottom:2px;}
-  .portrait-tag{
-    position:absolute; z-index:2; top:16px; left:16px;
-    font-family:var(--font-mono); font-size:0.72rem; color:#fff;
-    background:rgba(6,26,46,0.55); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-    border:1px solid rgba(255,255,255,0.14);
-    border-radius:100px; padding:6px 12px;
-    display:flex; align-items:center; gap:6px;
+  .portrait-info strong{display:block; font-family:var(--font-display); font-size:1rem; color:var(--navy-deep);}
+  .portrait-info span{display:block; font-family:var(--font-mono); font-size:0.78rem; color:var(--muted); margin-top:2px;}
+  .portrait-status{
+    display:flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:0.72rem; color:var(--muted);
+    white-space:nowrap;
   }
-  .portrait-tag .d{width:6px; height:6px; border-radius:50%; background:#22C55E;}
+  .portrait-status .d{width:6px; height:6px; border-radius:50%; background:#22C55E;}
 
   /* ---------- Updates ---------- */
   .updates{border-top:1px solid var(--line);}
@@ -758,8 +768,6 @@
     </div>
   </nav>
 </header>
-<div class="nav-scrim" id="navScrim"></div>
-
 <main id="main">
 
   <!-- HERO -->
@@ -798,14 +806,17 @@
       <div class="reveal portrait-col">
         <p class="eyebrow">About</p>
         <h2 data-ck="about-heading">Building things, quickly and on purpose.</h2>
-        <div class="portrait-wrap" id="portraitWrap">
+        <div class="portrait-photo" id="portraitWrap">
           <div class="portrait-frame" id="portraitFrame">
             <img src="raymond.jpg" alt="Portrait of Ogundimbola Adesoji Raymond" width="900" height="1200" loading="lazy">
-            <span class="portrait-tag"><span class="d"></span>Building Taiky</span>
-            <div class="portrait-badge">
-              <span><strong>Raymond Ogundimbola</strong>Founder &amp; CEO, Taiky</span>
-            </div>
           </div>
+        </div>
+        <div class="portrait-info">
+          <div>
+            <strong>Raymond Ogundimbola</strong>
+            <span>Founder &amp; CEO, Taiky</span>
+          </div>
+          <div class="portrait-status"><span class="d"></span>Building Taiky</div>
         </div>
       </div>
       <div class="about-copy reveal">
@@ -1200,7 +1211,7 @@
       </div>
 
       <div class="reveal">
-        <form class="form-card" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <form class="form-card" id="contactForm" name="contact" method="POST" action="/thank-you.html" data-netlify="true" netlify-honeypot="bot-field" novalidate>
           <input type="hidden" name="form-name" value="contact">
           <p style="position:absolute; left:-9999px;" aria-hidden="true">
             <label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label>
@@ -1233,13 +1244,6 @@
           </div>
           <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;" id="submitBtn">Start a Conversation</button>
           <p class="form-note" id="formNote">This goes straight to Raymond, no third party in between.</p>
-
-          <div class="form-success" id="formSuccess">
-            <h4 id="successHeading">Message sent</h4>
-            <p id="successBody">Thanks for reaching out, Raymond will get back to you soon.</p>
-            <textarea id="successText" readonly style="display:none;"></textarea>
-            <button type="button" class="btn btn-ghost" id="copyBtn" style="display:none;">Copy Message</button>
-          </div>
         </form>
       </div>
     </div>
@@ -1310,24 +1314,20 @@
   // Mobile menu
   var toggle = document.getElementById('menuToggle');
   var navLinks = document.getElementById('navLinks');
-  var navScrim = document.getElementById('navScrim');
 
   function closeMenu(){
     navLinks.classList.remove('open');
     toggle.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
-    navScrim.classList.remove('open');
-    document.body.style.overflow = '';
+    document.body.classList.remove('menu-open');
   }
 
   toggle.addEventListener('click', function(){
     var open = navLinks.classList.toggle('open');
     toggle.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    navScrim.classList.toggle('open', open);
-    document.body.style.overflow = open ? 'hidden' : '';
+    document.body.classList.toggle('menu-open', open);
   });
-  navScrim.addEventListener('click', closeMenu);
   navLinks.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', closeMenu);
   });
@@ -1472,12 +1472,10 @@
   }
 
   // Contact form
+  // Netlify captures this as a normal form POST, no fetch involved,
+  // that's the reliable way to make Netlify Forms actually deliver.
+  // We only validate here; a valid submit is left to submit normally.
   var form = document.getElementById('contactForm');
-  var successBox = document.getElementById('formSuccess');
-  var successHeading = document.getElementById('successHeading');
-  var successBody = document.getElementById('successBody');
-  var successText = document.getElementById('successText');
-  var copyBtn = document.getElementById('copyBtn');
   var submitBtn = document.getElementById('submitBtn');
 
   function setInvalid(id, invalid){
@@ -1485,34 +1483,7 @@
     field.classList.toggle('invalid', invalid);
   }
 
-  function encodeForm(data){
-    return Object.keys(data).map(function(key){
-      return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]);
-    }).join('&');
-  }
-
-  function showFallback(summary){
-    successHeading.textContent = 'Your message is ready';
-    successBody.textContent = "Couldn't reach the network just now. Copy this and send it over on GitHub, or by email directly.";
-    successText.style.display = 'block';
-    successText.value = summary;
-    copyBtn.style.display = 'inline-flex';
-    successBox.classList.add('show');
-    successBox.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block:'nearest'});
-  }
-
-  function showSent(){
-    successHeading.textContent = 'Message sent';
-    successBody.textContent = 'Thanks for reaching out, Raymond will get back to you soon.';
-    successText.style.display = 'none';
-    copyBtn.style.display = 'none';
-    successBox.classList.add('show');
-    successBox.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block:'nearest'});
-    form.reset();
-  }
-
   form.addEventListener('submit', function(e){
-    e.preventDefault();
     var name = document.getElementById('name').value.trim();
     var email = document.getElementById('email').value.trim();
     var type = document.getElementById('type').value;
@@ -1526,49 +1497,12 @@
     setInvalid('f-message', message.length === 0); if(message.length === 0) valid = false;
 
     if(!valid){
-      successBox.classList.remove('show');
+      e.preventDefault();
       return;
     }
-
-    var summary = 'From: ' + name + ' (' + email + ')\nProject type: ' + type + '\n\n' + message;
     submitBtn.textContent = 'Sending...';
     submitBtn.disabled = true;
-
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encodeForm({
-        'form-name': 'contact',
-        name: name,
-        email: email,
-        type: type,
-        message: message
-      })
-    }).then(function(res){
-      submitBtn.textContent = 'Start a Conversation';
-      submitBtn.disabled = false;
-      if(res.ok){
-        showSent();
-      } else {
-        showFallback(summary);
-      }
-    }).catch(function(){
-      submitBtn.textContent = 'Start a Conversation';
-      submitBtn.disabled = false;
-      showFallback(summary);
-    });
-  });
-
-  copyBtn.addEventListener('click', function(){
-    successText.select();
-    successText.setSelectionRange(0, 99999);
-    try{
-      navigator.clipboard.writeText(successText.value);
-      copyBtn.textContent = 'Copied';
-      setTimeout(function(){ copyBtn.textContent = 'Copy Message'; }, 1800);
-    }catch(err){
-      document.execCommand('copy');
-    }
+    // no preventDefault here, the browser submits the form to Netlify for real
   });
 
   // LinkedIn placeholder handling (no verified URL available)
