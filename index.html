@@ -280,7 +280,7 @@
     padding:96px 0 100px;
     background:
       radial-gradient(circle at 82% 18%, rgba(47,111,237,0.08), transparent 45%),
-      var(--bg-soft);
+      var(--surface);
     border-bottom:1px solid var(--line);
     position:relative;
     overflow:hidden;
@@ -1478,6 +1478,10 @@
     <button class="cms-btn" id="cmsReset">Reset to original text</button>
     <button class="cms-btn" id="cmsLock">Lock editor</button>
   </div>
+  <div id="cmsBioRow" style="display:none; margin-top:14px; padding-top:14px; border-top:1px solid var(--line);">
+    <button class="cms-btn" id="cmsBioAdd">Remember this device with fingerprint / Face ID</button>
+    <div class="cms-status" id="cmsBioStatus"></div>
+  </div>
   <div class="cms-status" id="cmsStatus"></div>
 </div>
 
@@ -1891,17 +1895,16 @@
 
   /* =========================================================
      LOCK / UNLOCK
-     The editor stays hidden behind a nearly invisible dot in
-     the corner. Opening it asks for a fingerprint (via the
-     device's own Face ID / Touch ID / Windows Hello, through
-     WebAuthn) or a passcode as a fallback. The first time it's
-     opened on a device, it walks through setup instead.
-     There is no server here, so this is a local gate for your
-     own devices, not a login system with central control.
+     There is exactly one real passcode, set by Raymond and
+     baked in below as a hash, never as plain text. Nobody can
+     ever create their own passcode from this screen, this is
+     always "enter the passcode," never "set one up." A device
+     can optionally add fingerprint / Face ID unlock, but only
+     after it has already proven the correct passcode once.
      Fingerprint unlock needs HTTPS or localhost to work at all.
   ========================================================= */
 
-  var PASSCODE_KEY = 'raymond-cms-passcode-hash';
+  var MASTER_PASSCODE_HASH = '91b4d142823f7d20c5f08df69122de43f35f057a988d9619f6d3138485c9a203';
   var WEBAUTHN_KEY = 'raymond-cms-webauthn-id';
   var UNLOCK_KEY = 'raymond-cms-unlocked';
 
@@ -1943,16 +1946,13 @@
     });
   }
 
-  function isSetUp(){
-    return !!(storageAvailable && window.localStorage.getItem(PASSCODE_KEY));
-  }
-
   function markUnlocked(){
     try{ window.sessionStorage.setItem(UNLOCK_KEY, '1'); }catch(e){}
     lockOverlay.classList.remove('open');
     lockDot.classList.add('hidden');
     cmsToggle.style.display = 'flex';
     cmsPanel.classList.add('open');
+    refreshBioRow();
   }
 
   function lockEditor(){
@@ -1967,11 +1967,42 @@
     try{ return window.sessionStorage.getItem(UNLOCK_KEY) === '1'; }catch(e){ return false; }
   }
 
+  function registerBiometric(msgEl){
+    return navigator.credentials.create({
+      publicKey:{
+        challenge: randomBytes(32),
+        rp: { name: 'Raymond Portfolio' },
+        user: { id: randomBytes(16), name: 'raymond', displayName: 'Raymond' },
+        pubKeyCredParams: [{ type:'public-key', alg:-7 }, { type:'public-key', alg:-257 }],
+        authenticatorSelection: { authenticatorAttachment:'platform', userVerification:'required' },
+        timeout: 60000
+      }
+    }).then(function(cred){
+      try{ window.localStorage.setItem(WEBAUTHN_KEY, bufToB64(cred.rawId)); }catch(e){}
+      if(msgEl) msgEl.textContent = 'Fingerprint added for this device.';
+    }).catch(function(){
+      if(msgEl) msgEl.textContent = 'Could not register on this device.';
+    });
+  }
+
+  // Inside the already-unlocked panel: offer to remember this device
+  // with fingerprint/Face ID, only reachable after a correct passcode.
+  function refreshBioRow(){
+    var row = document.getElementById('cmsBioRow');
+    if(!row) return;
+    var registered = !!(window.localStorage && window.localStorage.getItem(WEBAUTHN_KEY));
+    if(!hasWebAuthn() || registered){
+      row.style.display = 'none';
+      return;
+    }
+    row.style.display = 'block';
+  }
+
   function renderUnlockView(){
-    var canBio = hasWebAuthn() && !!window.localStorage.getItem(WEBAUTHN_KEY);
+    var canBio = hasWebAuthn() && !!(window.localStorage && window.localStorage.getItem(WEBAUTHN_KEY));
     lockBox.innerHTML =
       '<h4>Site owner sign in</h4>' +
-      '<p class="sub">Editing is locked for everyone else. Unlock it with your fingerprint or your passcode.</p>' +
+      '<p class="sub">Editing is locked for everyone else. Only Raymond\'s passcode unlocks it.</p>' +
       (canBio ? '<div class="cms-lock-actions"><button class="cms-lock-btn primary" id="bioUnlockBtn">Unlock with fingerprint / Face ID</button></div><div class="cms-lock-divider">or</div>' : '') +
       '<input type="password" id="passInput" placeholder="Passcode" autocomplete="off">' +
       '<div class="cms-lock-actions">' +
@@ -2003,9 +2034,9 @@
 
     document.getElementById('passUnlockBtn').addEventListener('click', function(){
       var val = document.getElementById('passInput').value;
-      if(!val){ msg.textContent = 'Enter your passcode.'; return; }
+      if(!val){ msg.textContent = 'Enter the passcode.'; return; }
       sha256Hex(val).then(function(hex){
-        if(hex === window.localStorage.getItem(PASSCODE_KEY)){
+        if(hex === MASTER_PASSCODE_HASH){
           markUnlocked();
         } else {
           msg.textContent = 'Wrong passcode.';
@@ -2018,68 +2049,9 @@
     });
   }
 
-  function renderSetupView(){
-    var canBio = hasWebAuthn();
-    lockBox.innerHTML =
-      '<h4>Set up the site editor</h4>' +
-      '<p class="sub">This runs once per device. Choose a passcode, and optionally add fingerprint unlock too.</p>' +
-      '<input type="password" id="setPass1" placeholder="Choose a passcode" autocomplete="off">' +
-      '<input type="password" id="setPass2" placeholder="Confirm passcode" autocomplete="off">' +
-      '<div class="cms-lock-actions">' +
-        (canBio ? '<button class="cms-lock-btn" id="setBioBtn">Also register fingerprint / Face ID</button>' : '') +
-        '<button class="cms-lock-btn primary" id="setSaveBtn">Save and unlock</button>' +
-        '<button class="cms-lock-btn" id="setCancelBtn">Cancel</button>' +
-      '</div>' +
-      '<div class="cms-lock-msg" id="lockMsg"></div>';
-
-    var msg = document.getElementById('lockMsg');
-    var bioRegistered = false;
-
-    if(canBio){
-      document.getElementById('setBioBtn').addEventListener('click', function(){
-        msg.textContent = 'Follow your device prompt...';
-        navigator.credentials.create({
-          publicKey:{
-            challenge: randomBytes(32),
-            rp: { name: 'Raymond Portfolio' },
-            user: { id: randomBytes(16), name: 'raymond', displayName: 'Raymond' },
-            pubKeyCredParams: [{ type:'public-key', alg:-7 }, { type:'public-key', alg:-257 }],
-            authenticatorSelection: { authenticatorAttachment:'platform', userVerification:'required' },
-            timeout: 60000
-          }
-        }).then(function(cred){
-          window.localStorage.setItem(WEBAUTHN_KEY, bufToB64(cred.rawId));
-          bioRegistered = true;
-          msg.textContent = 'Fingerprint registered. Set a passcode too, then save.';
-        }).catch(function(){
-          msg.textContent = 'Could not register fingerprint on this device. A passcode alone still works.';
-        });
-      });
-    }
-
-    document.getElementById('setSaveBtn').addEventListener('click', function(){
-      var p1 = document.getElementById('setPass1').value;
-      var p2 = document.getElementById('setPass2').value;
-      if(p1.length < 4){ msg.textContent = 'Use at least 4 characters.'; return; }
-      if(p1 !== p2){ msg.textContent = 'Passcodes do not match.'; return; }
-      sha256Hex(p1).then(function(hex){
-        if(!storageAvailable){
-          msg.textContent = 'This browser is blocking local storage, so unlock cannot be saved here.';
-          return;
-        }
-        window.localStorage.setItem(PASSCODE_KEY, hex);
-        markUnlocked();
-      });
-    });
-
-    document.getElementById('setCancelBtn').addEventListener('click', function(){
-      lockOverlay.classList.remove('open');
-    });
-  }
-
   function openLock(){
     lockOverlay.classList.add('open');
-    if(isSetUp()){ renderUnlockView(); } else { renderSetupView(); }
+    renderUnlockView();
   }
 
   lockDot.addEventListener('click', openLock);
@@ -2092,10 +2064,20 @@
     lockEditor();
   });
 
+  var bioAddBtn = document.getElementById('cmsBioAdd');
+  if(bioAddBtn){
+    bioAddBtn.addEventListener('click', function(){
+      var status = document.getElementById('cmsBioStatus');
+      status.textContent = 'Follow your device prompt...';
+      registerBiometric(status).then(refreshBioRow);
+    });
+  }
+
   // Restore state on load
   if(isUnlockedThisSession()){
     lockDot.classList.add('hidden');
     cmsToggle.style.display = 'flex';
+    refreshBioRow();
   } else {
     cmsToggle.style.display = 'none';
   }
